@@ -46,7 +46,7 @@ export function LiveEcosystemBar() {
   const [narrative, setNarrative] = useState<string | null>(null);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
+    const mq = window.matchMedia("(min-width: 1024px)");
     const sync = () => setOpen(mq.matches);
     sync();
     mq.addEventListener("change", sync);
@@ -122,7 +122,7 @@ export function LiveEcosystemBar() {
 
   return (
     <div
-      className="fixed top-1/2 right-0 z-40 flex -translate-y-1/2 items-stretch"
+      className="fixed top-1/2 right-0 z-40 hidden -translate-y-1/2 items-stretch lg:flex"
       aria-label="Panel del ecosistema en vivo"
     >
       <button
