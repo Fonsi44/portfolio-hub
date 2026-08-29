@@ -1,151 +1,147 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ExternalLink, FlaskConical } from "lucide-react";
 import Link from "next/link";
-import { useMemo, useState } from "react";
 import type { Project } from "@/lib/site";
-import { projects } from "@/lib/site";
+import {
+  flagshipProjects,
+  labProjects,
+  productionProjects,
+} from "@/lib/site";
 
-const categoryLabels = {
-  fullstack: "Full-stack",
-  ai: "AI Agent",
-  frontend: "Frontend",
-};
-
-const categoryColors = {
-  fullstack: "text-emerald-400 border-emerald-500/20 bg-emerald-500/10",
-  ai: "text-violet-400 border-violet-500/20 bg-violet-500/10",
-  frontend: "text-sky-400 border-sky-500/20 bg-sky-500/10",
-};
-
-type Filter = "all" | Project["category"];
-
-function ProjectLauncherCard({ project, index }: { project: Project; index: number }) {
+function FlagshipCard({ project, index }: { project: Project; index: number }) {
   const reduced = useReducedMotion();
 
   return (
     <motion.article
-      initial={reduced ? false : { opacity: 0, y: 32 }}
+      initial={reduced ? false : { opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="group relative"
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900/80 to-zinc-950 p-8 md:p-10"
+      style={{ backgroundImage: `linear-gradient(135deg, transparent 60%)` }}
     >
-      <Link
-        href={`/projects/${project.slug}`}
-        className={`relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/8 bg-gradient-to-br ${project.gradient} p-6 transition duration-300 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/5 focus-visible:ring-2 focus-visible:ring-cyan-400`}
-      >
-        <div className="mb-4 flex items-start justify-between">
-          <span className="text-3xl" role="img" aria-label={project.title}>
-            {project.icon}
-          </span>
-          <span
-            className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${categoryColors[project.category]}`}
-          >
-            {categoryLabels[project.category]}
-          </span>
-        </div>
-
-        <div className="flex-1">
-          <p className="font-mono text-xs text-zinc-500">{project.year}</p>
-          <h3 className="mt-1 text-xl font-semibold text-white">{project.title}</h3>
-          <p className="mt-0.5 text-sm text-cyan-400/80">{project.subtitle}</p>
-          <p className="mt-3 text-sm leading-relaxed text-zinc-400">{project.description}</p>
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-1.5">
-          {project.stack.slice(0, 4).map((tech) => (
-            <span
-              key={tech}
-              className="rounded-md bg-black/20 px-2 py-0.5 font-mono text-[10px] text-zinc-400"
-            >
-              {tech}
+      <div
+        className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-60`}
+        aria-hidden="true"
+      />
+      <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-xl">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="text-4xl" role="img" aria-label={project.title}>
+              {project.icon}
             </span>
-          ))}
+            <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-0.5 font-mono text-[10px] tracking-widest text-cyan-400 uppercase">
+              Producto flagship
+            </span>
+          </div>
+          <h3 className="text-3xl font-bold text-white md:text-4xl">{project.title}</h3>
+          <p className="mt-1 text-lg text-cyan-400/90">{project.subtitle}</p>
+          <p className="mt-4 text-pretty leading-relaxed text-zinc-300">{project.description}</p>
+          <ul className="mt-4 grid gap-1.5 sm:grid-cols-2">
+            {project.highlights.map((h) => (
+              <li key={h} className="font-mono text-[11px] text-zinc-500">
+                → {h}
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-4">
-          <span className="flex items-center gap-1 text-xs font-medium text-cyan-400 opacity-0 transition group-hover:opacity-100">
-            Ver case study
-            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-          </span>
+        <div className="flex shrink-0 flex-wrap gap-3">
           <a
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="flex items-center gap-1 rounded-lg bg-white/5 px-2.5 py-1 text-xs text-zinc-400 transition hover:bg-cyan-500/10 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400"
-            aria-label={`Abrir demo de ${project.title}`}
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:from-cyan-300 hover:to-cyan-400"
           >
-            <ExternalLink className="h-3 w-3" aria-hidden="true" />
-            Demo
+            Abrir producto
+            <ExternalLink className="h-4 w-4" aria-hidden="true" />
           </a>
+          <Link
+            href={`/projects/${project.slug}`}
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-zinc-300 transition hover:border-cyan-500/30 hover:text-cyan-300"
+          >
+            Case study
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
         </div>
-      </Link>
+      </div>
     </motion.article>
   );
 }
 
-export function ProjectsSection() {
-  const [filter, setFilter] = useState<Filter>("all");
-
-  const filtered = useMemo(
-    () => (filter === "all" ? projects : projects.filter((p) => p.category === filter)),
-    [filter],
+function CompactCard({ project }: { project: Project }) {
+  return (
+    <Link
+      href={`/projects/${project.slug}`}
+      className={`flex flex-col rounded-2xl border border-white/8 bg-gradient-to-br ${project.gradient} p-5 transition hover:border-white/15`}
+    >
+      <span className="text-2xl">{project.icon}</span>
+      <h3 className="mt-2 font-semibold text-white">{project.title}</h3>
+      <p className="mt-1 text-sm text-zinc-400">{project.description}</p>
+      <a
+        href={project.liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+        className="mt-4 inline-flex items-center gap-1 text-xs text-cyan-400"
+      >
+        <ExternalLink className="h-3 w-3" aria-hidden="true" />
+        Demo
+      </a>
+    </Link>
   );
+}
 
-  const filters: { id: Filter; label: string }[] = [
-    { id: "all", label: "Todos" },
-    { id: "ai", label: "AI" },
-    { id: "frontend", label: "Frontend" },
-    { id: "fullstack", label: "Full-stack" },
-  ];
-
+export function ProjectsSection() {
   return (
     <section id="projects" className="scroll-mt-24 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="mb-2 font-mono text-xs tracking-[0.3em] text-cyan-400/70 uppercase">
-              Portfolio
-            </p>
-            <h2 className="text-balance text-3xl font-bold text-white md:text-4xl">
-              Proyectos & Demos
-            </h2>
-            <p className="mt-3 max-w-xl text-pretty text-zinc-400">
-              Demos de agentes IA, dashboards, motion design y colaboración en
-              tiempo real. Cada proyecto con estilo propio, demo live y código
-              open source.
-            </p>
-          </div>
-          <p className="font-mono text-xs text-zinc-600">
-            ⌘K para navegar rápido
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-16">
+          <p className="mb-2 font-mono text-xs tracking-[0.3em] text-cyan-400/70 uppercase">
+            Productos
+          </p>
+          <h2 className="text-balance text-3xl font-bold text-white md:text-4xl">
+            Pocos proyectos. Mucha profundidad.
+          </h2>
+          <p className="mt-3 max-w-2xl text-pretty text-zinc-400">
+            Tres herramientas interactivas diseñadas para usarse de verdad — no demos
+            superficiales. Cada una con identidad propia, backend live y flujos completos.
           </p>
         </div>
 
-        <div className="mb-8 flex flex-wrap gap-2">
-          {filters.map((f) => (
-            <button
-              key={f.id}
-              type="button"
-              onClick={() => setFilter(f.id)}
-              className={`rounded-full border px-4 py-1.5 text-xs font-medium transition ${
-                filter === f.id
-                  ? "border-cyan-500/40 bg-cyan-500/10 text-cyan-300"
-                  : "border-white/10 text-zinc-500 hover:border-white/20 hover:text-zinc-300"
-              }`}
-            >
-              {f.label}
-            </button>
+        <div className="space-y-8">
+          {flagshipProjects.map((project, i) => (
+            <FlagshipCard key={project.slug} project={project} index={i} />
           ))}
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((project, i) => (
-            <ProjectLauncherCard key={project.slug} project={project} index={i} />
-          ))}
-        </div>
+        {productionProjects.length > 0 && (
+          <div className="mt-20">
+            <p className="mb-6 font-mono text-xs tracking-[0.3em] text-emerald-400/70 uppercase">
+              En producción
+            </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {productionProjects.map((project) => (
+                <CompactCard key={project.slug} project={project} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {labProjects.length > 0 && (
+          <div className="mt-16 rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+            <div className="mb-4 flex items-center gap-2 text-zinc-500">
+              <FlaskConical className="h-4 w-4" aria-hidden="true" />
+              <span className="font-mono text-xs tracking-widest uppercase">Lab · experimentos</span>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {labProjects.map((project) => (
+                <CompactCard key={project.slug} project={project} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

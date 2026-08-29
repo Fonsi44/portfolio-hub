@@ -60,6 +60,7 @@ export const journey: JourneyStep[] = [
 ];
 
 export type ProjectCategory = "fullstack" | "ai" | "frontend";
+export type ProjectTier = "flagship" | "production" | "lab";
 
 export type Project = {
   slug: string;
@@ -71,6 +72,7 @@ export type Project = {
   liveUrl: string;
   repoUrl: string;
   featured: boolean;
+  tier: ProjectTier;
   category: ProjectCategory;
   highlights: string[];
   gradient: string;
@@ -101,6 +103,7 @@ export const projects: Project[] = [
     liveUrl: "https://www.pinedayasociadoshn.com",
     repoUrl: "https://github.com/Fonsi44/Justicia-Verdadera",
     featured: true,
+    tier: "production",
     category: "fullstack",
     highlights: [
       "Auth JWT + 2FA TOTP con RBAC granular",
@@ -114,22 +117,23 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-document-agent",
-    title: "AI Document Agent",
-    subtitle: "Tool Calling Demo",
+    title: "DocuMind",
+    subtitle: "Enterprise Document Intelligence",
     description:
-      "Workspace documental con biblioteca de 8 archivos, preview, búsqueda scored y tool cards ricas.",
+      "Agente IA con archivo documental, historial persistente, ⌘K y tool calling real con Gemini.",
     longDescription:
-      "DocuMind: agente IA con biblioteca lateral categorizada, panel de preview con acciones rápidas, corpus ampliado y resultados de herramientas renderizados como tarjetas (no JSON crudo). Streaming Gemini + feed de actividad live via Partykit.",
+      "Producto flagship de IA documental: workspace de 4 paneles, 8 documentos indexados, sesiones de chat persistentes, command palette, export markdown, preview con citas clicables y feed live. El agente usa herramientas tipadas — no es un chat genérico.",
     stack: ["Next.js", "Vercel AI SDK", "Gemini 3.6 Flash", "Zod", "Partykit", "TypeScript"],
     liveUrl: "https://ai-document-agent.vercel.app",
     repoUrl: "https://github.com/Fonsi44/ai-document-agent",
     featured: true,
+    tier: "flagship",
     category: "ai",
     highlights: [
-      "Biblioteca con filtros y preview de documentos",
-      "Tool cards ricas: búsqueda, extracción, resúmenes",
-      "Feed de actividad live via Partykit",
-      "8 documentos con metadata y búsqueda scored",
+      "Historial de consultas persistente",
+      "⌘K — buscar docs y lanzar queries",
+      "Tool cards + citas DOC-xxx clicables",
+      "Export markdown · onboarding guiado",
     ],
     gradient: "from-violet-500/20 via-purple-500/10 to-fuchsia-500/5",
     icon: "🤖",
@@ -137,22 +141,23 @@ export const projects: Project[] = [
   },
   {
     slug: "saas-dashboard",
-    title: "SaaS Dashboard",
-    subtitle: "Admin Panel Demo",
+    title: "RevOps",
+    subtitle: "Revenue Operations Platform",
     description:
-      "Panel ops con KPIs live, clientes, alertas, drawer de transacciones y vistas analytics.",
+      "Panel B2B completo: KPIs live, clientes, billing, settings y ⌘K para navegar como en producción.",
     longDescription:
-      "Dashboard SaaS product-grade: shell multi-vista (dashboard, customers, analytics), banner de alertas ops, drawer de detalle en transacciones, tabla de clientes con health/MRR y métricas sincronizadas en vivo via Partykit.",
-    stack: ["Next.js", "Recharts", "Partykit", "Tailwind CSS", "TypeScript"],
+      "Plataforma de operaciones de revenue — no un dashboard de juguete. Multi-vista (dashboard, analytics, customers, billing, settings), métricas en vivo via Partykit, drawers de detalle, alertas ops, date range funcional y command palette global.",
+    stack: ["Next.js", "Recharts", "Partykit", "cmdk", "TypeScript"],
     liveUrl: "https://saas-dashboard-gules-chi.vercel.app",
     repoUrl: "https://github.com/Fonsi44/saas-dashboard",
     featured: true,
+    tier: "flagship",
     category: "frontend",
     highlights: [
-      "KPIs y transacciones en vivo via Partykit",
-      "Drawer de detalle + timeline por transacción",
-      "Vista customers con MRR y health score",
-      "Alertas ops dismissibles",
+      "⌘K — navegar, buscar clientes y TXs",
+      "Billing + Settings funcionales",
+      "KPIs y transacciones en vivo",
+      "Customer drawer con historial",
     ],
     gradient: "from-sky-500/20 via-blue-500/10 to-indigo-500/5",
     icon: "📊",
@@ -169,7 +174,8 @@ export const projects: Project[] = [
     stack: ["Next.js", "GSAP", "Partykit", "ScrollTrigger", "Tailwind v4"],
     liveUrl: "https://animated-landing-tau.vercel.app",
     repoUrl: "https://github.com/Fonsi44/animated-landing",
-    featured: true,
+    featured: false,
+    tier: "lab",
     category: "frontend",
     highlights: [
       "Telemetría live: FPS, viewers, GPU",
@@ -183,22 +189,23 @@ export const projects: Project[] = [
   },
   {
     slug: "realtime-collab",
-    title: "Realtime Collab",
-    subtitle: "Live Cursors & Notes",
+    title: "Collab Board",
+    subtitle: "Realtime Team Workspace",
     description:
-      "Tablero colaborativo con salas compartibles, notas arrastrables, colores y cursores live.",
+      "Tablero multiusuario real: salas, plantillas, undo, export JSON y cursores sincronizados.",
     longDescription:
-      "Collab Board: sticky notes con drag por pointer, toolbar de color/delete, salas via ?room= en URL y sincronización WebSocket Partykit. Abre el mismo enlace en dos tabs para probar multi-user.",
+      "Herramienta de colaboración en tiempo real via Partykit. Identidad persistente, salas compartibles, plantillas (retro, brainstorm, kanban), sticky notes con drag fluido, undo ⌘Z, export del board y presencia live. Abre dos tabs — impresiona al instante.",
     stack: ["Next.js", "Partykit", "WebSockets", "partysocket", "TypeScript"],
     liveUrl: "https://realtime-collab-pink.vercel.app",
     repoUrl: "https://github.com/Fonsi44/realtime-collab",
     featured: true,
+    tier: "flagship",
     category: "fullstack",
     highlights: [
-      "Salas compartibles con ?room= en URL",
-      "Delete + color picker por nota",
-      "Drag con pointer events (sin jank)",
-      "Live cursors con avatares",
+      "Plantillas: Retro, Brainstorm, Kanban",
+      "Undo ⌘Z · export JSON",
+      "Salas ?room= compartibles",
+      "Live cursors multi-tab",
     ],
     gradient: "from-rose-500/20 via-orange-500/10 to-amber-500/5",
     icon: "🔄",
@@ -215,7 +222,8 @@ export const projects: Project[] = [
     stack: ["Next.js", "Partykit", "partysocket", "TypeScript", "Tailwind v4"],
     liveUrl: "https://automation-workflows.vercel.app",
     repoUrl: "https://github.com/Fonsi44/automation-workflows",
-    featured: true,
+    featured: false,
+    tier: "lab",
     category: "ai",
     highlights: [
       "3 templates: leads, invoices, support",
@@ -258,3 +266,7 @@ export const navItems = [
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);
 }
+
+export const flagshipProjects = projects.filter((p) => p.tier === "flagship");
+export const productionProjects = projects.filter((p) => p.tier === "production");
+export const labProjects = projects.filter((p) => p.tier === "lab");
