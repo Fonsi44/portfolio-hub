@@ -16,7 +16,7 @@ export function Header() {
           className="font-mono text-sm tracking-widest text-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030306]"
         >
           {site.name.toUpperCase()}
-          <span className="text-zinc-600">.dev</span>
+          <span className="text-zinc-600">DEV</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">

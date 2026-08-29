@@ -1,8 +1,11 @@
+import { fonsiUrls } from "./domains";
+
 export const site = {
   name: "Fonsi",
   fullName: "Alfons Roiget",
   role: "AI Builder & Creador de contenido",
   location: "Honduras",
+  domain: "fonsidev.com",
   tagline:
     "Vengo del mundo comercial. Hoy construyo agentes de IA, productos web y contenido sobre la tecnología que me apasiona.",
   bio: `Años en ventas y negociación me enseñaron a escuchar, cerrar y entender qué necesita la gente. Ahora canalizo eso en código: agentes conversacionales, plataformas en producción y demos que demuestran lo que la IA puede hacer de verdad.`,
@@ -13,7 +16,7 @@ Mi objetivo es claro: dedicarme al 100% a la inteligencia artificial — agentes
   phoneTel: "+34661911574",
   whatsapp: "34661911574",
   github: "https://github.com/Fonsi44",
-  portfolio: "https://portfolio-hub-flax.vercel.app",
+  portfolio: fonsiUrls.hub,
   available: true,
   vision:
     "Trabajar a tiempo completo construyendo con IA — agentes, automatización y productos que la gente use de verdad.",
@@ -139,7 +142,7 @@ export const projects: Project[] = [
     longDescription:
       "Producto flagship de IA documental: sube archivos .txt/.md/.csv, indexa en sesión, chat con historial persistente, command palette ⌘K, export markdown y preview con citas clicables. El agente usa herramientas tipadas con Gemini — no es un chat genérico.",
     stack: ["Next.js", "Vercel AI SDK", "Gemini 3.6 Flash", "Zod", "Partykit", "TypeScript"],
-    liveUrl: "https://ai-document-agent.vercel.app",
+    liveUrl: fonsiUrls.documind,
     repoUrl: "https://github.com/Fonsi44/ai-document-agent",
     featured: true,
     tier: "flagship",
@@ -171,7 +174,7 @@ export const projects: Project[] = [
     longDescription:
       "Plataforma de operaciones de revenue — no un dashboard de juguete. Multi-vista (dashboard, analytics, customers, billing, settings), métricas en vivo via Partykit, drawers de detalle, alertas ops, date range funcional y command palette global.",
     stack: ["Next.js", "Recharts", "Partykit", "cmdk", "TypeScript"],
-    liveUrl: "https://saas-dashboard-gules-chi.vercel.app",
+    liveUrl: fonsiUrls.revops,
     repoUrl: "https://github.com/Fonsi44/saas-dashboard",
     featured: true,
     tier: "flagship",
@@ -203,7 +206,7 @@ export const projects: Project[] = [
     longDescription:
       "Pulse mide el rendimiento de landings animadas. Hero con stats live via Partykit, pricing, testimonios, marquee infinito y telemetría flotante — esta página es el producto y el portfolio demo.",
     stack: ["Next.js", "GSAP", "Partykit", "ScrollTrigger", "Tailwind v4"],
-    liveUrl: "https://animated-landing-tau.vercel.app",
+    liveUrl: fonsiUrls.pulse,
     repoUrl: "https://github.com/Fonsi44/animated-landing",
     featured: false,
     tier: "lab",
@@ -235,7 +238,7 @@ export const projects: Project[] = [
     longDescription:
       "Herramienta de colaboración en tiempo real via Partykit. Identidad persistente, salas compartibles, plantillas (retro, brainstorm, kanban), sticky notes con drag fluido, undo ⌘Z, export del board y presencia live. Abre dos tabs — impresiona al instante.",
     stack: ["Next.js", "Partykit", "WebSockets", "partysocket", "TypeScript"],
-    liveUrl: "https://realtime-collab-pink.vercel.app",
+    liveUrl: fonsiUrls.collab,
     repoUrl: "https://github.com/Fonsi44/realtime-collab",
     featured: true,
     tier: "flagship",
@@ -267,7 +270,7 @@ export const projects: Project[] = [
     longDescription:
       "FlowForge: elige entre Lead Enrichment, Invoice Processing o Support Triage. Configura cada step, lanza con payload de prueba y observa Live Run Log + historial. El paso AI llama a Gemini via /api/enrich — con fallback mock si falta API key.",
     stack: ["Next.js", "Partykit", "partysocket", "TypeScript", "Tailwind v4"],
-    liveUrl: "https://automation-workflows.vercel.app",
+    liveUrl: fonsiUrls.flowforge,
     repoUrl: "https://github.com/Fonsi44/automation-workflows",
     featured: false,
     tier: "lab",
@@ -299,7 +302,7 @@ export const projects: Project[] = [
     longDescription:
       "SignalDesk centraliza tickets de soporte y usa Gemini para clasificar intención (billing, técnico, ventas), asignar prioridad y generar borradores de respuesta listos para revisión. Inbox unificado, cola por agente y feed de actividad en vivo via Partykit — pensado para equipos que quieren IA en el flujo sin perder control humano.",
     stack: ["Next.js", "Vercel AI SDK", "Gemini 3.6 Flash", "Partykit", "TypeScript"],
-    liveUrl: "https://ai-support-inbox-phi.vercel.app",
+    liveUrl: fonsiUrls.signaldesk,
     repoUrl: "https://github.com/Fonsi44/ai-support-inbox",
     featured: true,
     tier: "flagship",
@@ -331,7 +334,7 @@ export const projects: Project[] = [
     longDescription:
       "ModelTrace simula un dashboard de observabilidad para LLMs en producción. Ejecuta prompts reales con Gemini 3.6 Flash, registra latencia, tokens de entrada/salida y permite filtrar traces por estado. Métricas de sesión (p95, error rate) se calculan sobre runs locales — ideal para demostrar MLOps/LLMOps sin infra pesada.",
     stack: ["Next.js", "Vercel AI SDK", "Gemini 3.6 Flash", "TypeScript", "Tailwind v4"],
-    liveUrl: "https://llm-trace-lab.vercel.app",
+    liveUrl: fonsiUrls.modeltrace,
     repoUrl: "https://github.com/Fonsi44/llm-trace-lab",
     featured: false,
     tier: "lab",
