@@ -144,7 +144,7 @@ export const projects: Project[] = [
     longDescription:
       "Demo de colaboración en tiempo real. Múltiples usuarios ven cursores live, crean sticky notes sincronizadas y editan texto en conjunto. Backend con Partykit server desplegado en edge.",
     stack: ["Next.js", "Partykit", "WebSockets", "partysocket", "TypeScript"],
-    liveUrl: "https://realtime-collab.vercel.app",
+    liveUrl: "https://realtime-collab-pink.vercel.app",
     repoUrl: "https://github.com/Fonsi44/realtime-collab",
     featured: true,
     category: "fullstack",
