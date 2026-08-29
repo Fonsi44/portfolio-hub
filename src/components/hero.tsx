@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, Code2, Sparkles } from "lucide-react";
+import { ArrowDown, Code2, Mail, Sparkles } from "lucide-react";
 import { site } from "@/lib/site";
 
 export function Hero() {
@@ -21,7 +21,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
-              Disponible para trabajo
+              Abierto a oportunidades en IA
             </div>
           )}
 
@@ -38,8 +38,14 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="mx-auto mb-10 max-w-2xl text-pretty text-lg leading-relaxed text-zinc-400 md:text-xl">
+          <p className="mx-auto mb-4 max-w-2xl text-pretty text-lg leading-relaxed text-zinc-400 md:text-xl">
             {site.tagline}
+          </p>
+
+          <p className="mx-auto max-w-xl text-pretty text-sm leading-relaxed text-zinc-500">
+            Apasionado de la inteligencia artificial. Construyo agentes, demos en
+            producción y contenido sobre la tecnología que quiero vivir a tiempo
+            completo.
           </p>
         </motion.div>
 
@@ -47,15 +53,22 @@ export function Hero() {
           initial={reduced ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <a
-            href="#projects"
+            href="#journey"
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 px-7 py-3.5 text-sm font-semibold text-zinc-950 transition hover:from-cyan-300 hover:to-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030306]"
           >
             <Sparkles className="h-4 w-4" aria-hidden="true" />
-            Explorar proyectos
+            Conoce mi camino
             <ArrowDown className="h-4 w-4 transition group-hover:translate-y-0.5" aria-hidden="true" />
+          </a>
+          <a
+            href={`mailto:${site.email}`}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-7 py-3.5 text-sm font-medium text-zinc-300 transition hover:border-cyan-500/30 hover:bg-cyan-500/5 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            <Mail className="h-4 w-4" aria-hidden="true" />
+            Escríbeme
           </a>
           <a
             href={site.github}
@@ -75,12 +88,12 @@ export function Hero() {
           className="mt-20 grid grid-cols-3 gap-4 border-t border-white/5 pt-10 md:gap-8"
         >
           {[
+            { value: "Comercial", label: "Mi origen" },
             { value: "5+", label: "Proyectos en producción" },
-            { value: "Next.js 16", label: "Stack principal" },
-            { value: "AI + RAG", label: "Especialización" },
+            { value: "100%", label: "Objetivo: vivir de IA" },
           ].map((stat) => (
             <div key={stat.label}>
-              <p className="text-xl font-bold tabular-nums text-white md:text-2xl">
+              <p className="text-lg font-bold tabular-nums text-white md:text-2xl">
                 {stat.value}
               </p>
               <p className="mt-1 text-xs text-zinc-500">{stat.label}</p>

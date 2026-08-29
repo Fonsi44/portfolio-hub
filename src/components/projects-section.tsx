@@ -97,8 +97,9 @@ export function ProjectsSection() {
               Proyectos & Demos
             </h2>
             <p className="mt-3 max-w-xl text-pretty text-zinc-400">
-              Código en producción, agentes IA y dashboards interactivos. Cada
-              proyecto tiene demo live y repositorio open source.
+              Demos de agentes IA, dashboards, motion design y colaboración en
+              tiempo real. Cada proyecto con estilo propio, demo live y código
+              open source.
             </p>
           </div>
           <p className="font-mono text-xs text-zinc-600">

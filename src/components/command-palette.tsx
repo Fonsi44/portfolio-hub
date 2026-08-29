@@ -1,7 +1,7 @@
 "use client";
 
 import { Command } from "cmdk";
-import { ArrowUpRight, Code2, ExternalLink, Search, X } from "lucide-react";
+import { ArrowUpRight, Code2, ExternalLink, Mail, MessageCircle, Search, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { projects, site } from "@/lib/site";
@@ -93,11 +93,28 @@ export function CommandPalette({ open, onOpenChange }: Props) {
               <Code2 className="h-4 w-4 text-zinc-500" aria-hidden="true" />
               <span>GitHub — {site.name}</span>
             </Command.Item>
+            <Command.Item
+              value="email contacto"
+              onSelect={() => run(() => (window.location.href = `mailto:${site.email}`))}
+              className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-zinc-300 aria-selected:bg-white/5"
+            >
+              <Mail className="h-4 w-4 text-zinc-500" aria-hidden="true" />
+              <span>Email — {site.email}</span>
+            </Command.Item>
+            <Command.Item
+              value="whatsapp"
+              onSelect={() => run(() => window.open(`https://wa.me/${site.whatsapp}`, "_blank"))}
+              className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-zinc-300 aria-selected:bg-white/5"
+            >
+              <MessageCircle className="h-4 w-4 text-zinc-500" aria-hidden="true" />
+              <span>WhatsApp — {site.phoneDisplay}</span>
+            </Command.Item>
           </Command.Group>
 
           <Command.Group heading="Secciones">
             {[
               { href: "#about", label: "Sobre mí" },
+              { href: "#journey", label: "Mi camino" },
               { href: "#projects", label: "Proyectos" },
               { href: "#stack", label: "Stack" },
               { href: "#contact", label: "Contacto" },

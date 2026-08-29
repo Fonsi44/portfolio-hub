@@ -1,8 +1,21 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { Heart, MapPin, TrendingUp } from "lucide-react";
 import { site } from "@/lib/site";
+
+const traits = [
+  {
+    icon: TrendingUp,
+    title: "Mentalidad comercial",
+    text: "Sé escuchar, negociar y entender qué necesita el cliente antes de proponer una solución.",
+  },
+  {
+    icon: Heart,
+    title: "Pasión por la IA",
+    text: "No paro de experimentar: agentes, automatización, creación de contenido y nuevas herramientas cada semana.",
+  },
+];
 
 export function AboutSection() {
   const reduced = useReducedMotion();
@@ -27,6 +40,23 @@ export function AboutSection() {
             {site.location}
           </p>
           <p className="mt-6 text-pretty leading-relaxed text-zinc-400">{site.bio}</p>
+
+          <div className="mt-8 space-y-4">
+            {traits.map((trait) => (
+              <div
+                key={trait.title}
+                className="flex gap-4 rounded-xl border border-white/5 bg-zinc-950/40 p-4"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
+                  <trait.icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">{trait.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-zinc-500">{trait.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div
@@ -34,15 +64,25 @@ export function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="rounded-2xl border border-white/8 bg-zinc-950/60 p-8 backdrop-blur-sm"
+          className="flex flex-col rounded-2xl border border-white/8 bg-zinc-950/60 p-8 backdrop-blur-sm"
         >
           <p className="text-pretty leading-relaxed text-zinc-400">{site.longBio}</p>
+
+          <blockquote className="mt-8 border-l-2 border-cyan-500/40 pl-4">
+            <p className="text-pretty text-sm italic leading-relaxed text-zinc-300">
+              &ldquo;La IA no es el futuro para mí — es el presente que estoy
+              construyendo, proyecto a proyecto, hasta poder dedicarme a ello al
+              100%.&rdquo;
+            </p>
+            <footer className="mt-2 font-mono text-xs text-zinc-600">— Alfonso Roiget</footer>
+          </blockquote>
+
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#projects"
+              href="#journey"
               className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition hover:bg-cyan-500/20 focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              Ver proyectos
+              Ver mi camino
             </a>
             <a
               href="#contact"

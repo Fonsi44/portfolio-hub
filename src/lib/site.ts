@@ -1,18 +1,63 @@
 export const site = {
   name: "Fonsi",
   fullName: "Alfonso Roiget",
-  role: "Full-stack Developer & AI Engineer",
+  role: "AI Builder & Creador de contenido",
   location: "Honduras",
-  tagline: "Construyo productos web de producción, agentes IA y plataformas SaaS.",
-  bio: `Desarrollador full-stack con experiencia construyendo aplicaciones reales en producción. Especializado en Next.js, TypeScript, PostgreSQL y arquitecturas con IA (RAG, tool calling, agentes conversacionales).`,
-  longBio: `Mi proyecto flagship — Justicia-Verdadera — es una plataforma jurídica completa en producción para un despacho en Honduras: SEO, blog, calculadora de penas, intranet con auth JWT + 2FA, RBAC y búsqueda semántica con pgvector.
+  tagline:
+    "Vengo del mundo comercial. Hoy construyo agentes de IA, productos web y contenido sobre la tecnología que me apasiona.",
+  bio: `Años en ventas y negociación me enseñaron a escuchar, cerrar y entender qué necesita la gente. Ahora canalizo eso en código: agentes conversacionales, plataformas en producción y demos que demuestran lo que la IA puede hacer de verdad.`,
+  longBio: `Mi transición no fue de la noche a la mañana. Empecé creando contenido, probando herramientas, construyendo proyectos reales — hasta llegar a desplegar plataformas completas con auth, bases de datos y RAG en producción.
 
-Busco oportunidades como desarrollador full-stack donde pueda aportar desde el frontend hasta la infraestructura, con especial interés en productos que integren IA de forma útil.`,
-  email: "fonsi@example.com",
+Mi objetivo es claro: dedicarme al 100% a la inteligencia artificial — agentes, automatización y productos que resuelvan problemas reales. Este portfolio es la prueba de ese camino.`,
+  email: "alfonsroiget@gmail.com",
+  phone: "661911574",
+  phoneDisplay: "661 911 574",
+  phoneTel: "+34661911574",
+  whatsapp: "34661911574",
   github: "https://github.com/Fonsi44",
   portfolio: "https://portfolio-hub-flax.vercel.app",
   available: true,
+  vision:
+    "Trabajar a tiempo completo construyendo con IA — agentes, automatización y productos que la gente use de verdad.",
 };
+
+export type JourneyStep = {
+  era: string;
+  title: string;
+  description: string;
+  icon: string;
+};
+
+export const journey: JourneyStep[] = [
+  {
+    era: "Origen",
+    title: "Mundo comercial",
+    description:
+      "Años en ventas y relación con clientes. Aprendí negociación, escucha activa y cómo traducir necesidades en soluciones concretas.",
+    icon: "🤝",
+  },
+  {
+    era: "Transición",
+    title: "Descubrimiento de la IA",
+    description:
+      "Las IA cambiaron mi forma de trabajar. Empecé a crear contenido, experimentar con prompts, automatizar tareas y entender el potencial real de la tecnología.",
+    icon: "✨",
+  },
+  {
+    era: "Construcción",
+    title: "De contenido a código",
+    description:
+      "Pasé de consumir IA a construirla: agentes con tool calling, dashboards, landings animadas, colaboración en tiempo real y plataformas full-stack en producción.",
+    icon: "⚡",
+  },
+  {
+    era: "Objetivo",
+    title: "100% dedicado a la IA",
+    description:
+      "Busco oportunidades para vivir de lo que me apasiona: agentes inteligentes, automatización y productos web que integren IA de forma útil.",
+    icon: "🎯",
+  },
+];
 
 export type ProjectCategory = "fullstack" | "ai" | "frontend";
 
@@ -119,7 +164,7 @@ export const projects: Project[] = [
     description:
       "Landing con scroll orchestration, parallax, reveals y micro-interacciones vía GSAP ScrollTrigger.",
     longDescription:
-      "Demo de motion design con GSAP y useGSAP. Hero timeline con stagger, ScrollTrigger en feature cards, glow ambient animado y respeto a prefers-reduced-motion. Mismo design system cyan/dark del portfolio.",
+      "Demo de motion design con GSAP y useGSAP. Hero timeline con stagger, ScrollTrigger en feature cards, glow ambient animado y respeto a prefers-reduced-motion. Estética sunset/naranja propia.",
     stack: ["Next.js", "GSAP", "ScrollTrigger", "useGSAP", "Tailwind v4"],
     liveUrl: "https://animated-landing-tau.vercel.app",
     repoUrl: "https://github.com/Fonsi44/animated-landing",
@@ -131,7 +176,7 @@ export const projects: Project[] = [
       "Animaciones compositor-friendly (transform/opacity)",
       "Reduced motion support",
     ],
-    gradient: "from-cyan-500/20 via-teal-500/10 to-emerald-500/5",
+    gradient: "from-orange-500/20 via-rose-500/10 to-amber-500/5",
     icon: "✨",
     year: "2026",
   },
@@ -161,15 +206,17 @@ export const projects: Project[] = [
 ];
 
 export const skills = [
+  "Vercel AI SDK",
+  "Gemini 3.6 Flash",
+  "Agentes IA",
+  "Tool Calling",
+  "RAG / pgvector",
   "Next.js 16",
   "React 19",
   "TypeScript",
   "Tailwind CSS v4",
   "GSAP / ScrollTrigger",
   "Partykit",
-  "Vercel AI SDK",
-  "Gemini 3.6 Flash",
-  "RAG / pgvector",
   "PostgreSQL",
   "Playwright",
   "GitHub Actions",
@@ -177,6 +224,7 @@ export const skills = [
 
 export const navItems = [
   { href: "#about", label: "Sobre mí" },
+  { href: "#journey", label: "Mi camino" },
   { href: "#projects", label: "Proyectos" },
   { href: "#stack", label: "Stack" },
   { href: "#contact", label: "Contacto" },

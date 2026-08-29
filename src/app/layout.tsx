@@ -19,10 +19,10 @@ const ibmMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${site.name} — Full-stack Developer & AI Engineer`,
+  title: `${site.fullName} — AI Builder & Creador de contenido`,
   description: site.tagline,
   openGraph: {
-    title: `${site.name} — ${site.role}`,
+    title: `${site.fullName} — ${site.role}`,
     description: site.tagline,
     type: "website",
     url: site.portfolio,
