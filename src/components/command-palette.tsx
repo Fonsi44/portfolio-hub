@@ -4,7 +4,7 @@ import { Command } from "cmdk";
 import { ArrowUpRight, Code2, ExternalLink, Mail, MessageCircle, Search, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import { projects, site } from "@/lib/site";
+import { site, flagshipProjects, labProjects, productionProjects } from "@/lib/site";
 
 type Props = {
   open: boolean;
@@ -55,8 +55,26 @@ export function CommandPalette({ open, onOpenChange }: Props) {
             Sin resultados.
           </Command.Empty>
 
-          <Command.Group heading="Proyectos">
-            {projects.map((p) => (
+          <Command.Group heading="Productos flagship">
+            {flagshipProjects.map((p) => (
+              <Command.Item
+                key={p.slug}
+                value={`flagship ${p.title} ${p.subtitle}`}
+                onSelect={() => run(() => window.open(p.liveUrl, "_blank"))}
+                className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-zinc-300 aria-selected:bg-cyan-500/10 aria-selected:text-cyan-300"
+              >
+                <span className="text-lg">{p.icon}</span>
+                <div className="flex-1">
+                  <p className="font-medium">{p.title}</p>
+                  <p className="text-xs text-zinc-500">{p.subtitle}</p>
+                </div>
+                <ExternalLink className="h-3.5 w-3.5 opacity-50" aria-hidden="true" />
+              </Command.Item>
+            ))}
+          </Command.Group>
+
+          <Command.Group heading="Case studies">
+            {[...productionProjects, ...labProjects].map((p) => (
               <Command.Item
                 key={p.slug}
                 value={`${p.title} ${p.subtitle}`}
@@ -74,7 +92,7 @@ export function CommandPalette({ open, onOpenChange }: Props) {
           </Command.Group>
 
           <Command.Group heading="Demos en vivo">
-            {projects.map((p) => (
+            {flagshipProjects.map((p) => (
               <Command.Item
                 key={`live-${p.slug}`}
                 value={`demo live ${p.title}`}
@@ -82,7 +100,7 @@ export function CommandPalette({ open, onOpenChange }: Props) {
                 className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-zinc-300 aria-selected:bg-white/5"
               >
                 <ExternalLink className="h-4 w-4 text-zinc-500" aria-hidden="true" />
-                <span>Abrir demo: {p.title}</span>
+                <span>Abrir {p.title}</span>
               </Command.Item>
             ))}
             <Command.Item

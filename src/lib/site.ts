@@ -75,6 +75,8 @@ export type Project = {
   tier: ProjectTier;
   category: ProjectCategory;
   highlights: string[];
+  architecture?: string[];
+  tryHint?: string;
   gradient: string;
   icon: string;
   year: string;
@@ -135,6 +137,13 @@ export const projects: Project[] = [
       "Tool cards + citas DOC-xxx clicables",
       "Export markdown · onboarding guiado",
     ],
+    architecture: [
+      "Next.js App Router + Vercel AI SDK streaming",
+      "Gemini 3.6 Flash con 4 herramientas Zod tipadas",
+      "Partykit ecosystem feed para actividad cross-app",
+      "Sesiones persistidas en localStorage del cliente",
+    ],
+    tryHint: "Prueba ⌘K → «Resume contrato SaaS» y haz click en una cita DOC-xxx",
     gradient: "from-violet-500/20 via-purple-500/10 to-fuchsia-500/5",
     icon: "🤖",
     year: "2026",
@@ -159,6 +168,13 @@ export const projects: Project[] = [
       "KPIs y transacciones en vivo",
       "Customer drawer con historial",
     ],
+    architecture: [
+      "Shell multi-vista con Recharts y dark mode",
+      "Partykit room «saas» para metric-tick y transaction-new",
+      "Command palette cmdk para navegación ops",
+      "Date range slicing sobre dataset mock realista",
+    ],
+    tryHint: "Pulsa ⌘K → busca «Acme Corp» → abre el customer drawer",
     gradient: "from-sky-500/20 via-blue-500/10 to-indigo-500/5",
     icon: "📊",
     year: "2026",
@@ -207,6 +223,13 @@ export const projects: Project[] = [
       "Salas ?room= compartibles",
       "Live cursors multi-tab",
     ],
+    architecture: [
+      "Partykit server compartido con rooms dinámicos",
+      "Pointer events para drag sin jank",
+      "Sync note-add/update/move/delete/color via WebSocket",
+      "Identidad persistida + plantillas de sala",
+    ],
+    tryHint: "Abre ?room=demo en dos tabs · aplica plantilla Sprint Retro",
     gradient: "from-rose-500/20 via-orange-500/10 to-amber-500/5",
     icon: "🔄",
     year: "2026",
