@@ -1,7 +1,16 @@
 "use client";
 
 import { Command } from "cmdk";
-import { ArrowUpRight, Code2, ExternalLink, Mail, MessageCircle, Search, X } from "lucide-react";
+import {
+  ArrowUpRight,
+  Code2,
+  ExternalLink,
+  Mail,
+  MessageCircle,
+  Phone,
+  Search,
+  X,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { site, flagshipProjects, labProjects, productionProjects } from "@/lib/site";
@@ -120,12 +129,20 @@ export function CommandPalette({ open, onOpenChange }: Props) {
               <span>Email — {site.email}</span>
             </Command.Item>
             <Command.Item
+              value="llamar telefono"
+              onSelect={() => run(() => (window.location.href = `tel:${site.phoneTel}`))}
+              className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-zinc-300 aria-selected:bg-white/5"
+            >
+              <Phone className="h-4 w-4 text-zinc-500" aria-hidden="true" />
+              <span>Llamar</span>
+            </Command.Item>
+            <Command.Item
               value="whatsapp"
               onSelect={() => run(() => window.open(`https://wa.me/${site.whatsapp}`, "_blank"))}
               className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-zinc-300 aria-selected:bg-white/5"
             >
               <MessageCircle className="h-4 w-4 text-zinc-500" aria-hidden="true" />
-              <span>WhatsApp — {site.phoneDisplay}</span>
+              <span>WhatsApp</span>
             </Command.Item>
           </Command.Group>
 

@@ -74,7 +74,7 @@ export function AboutSection() {
               construyendo, proyecto a proyecto, hasta poder dedicarme a ello al
               100%.&rdquo;
             </p>
-            <footer className="mt-2 font-mono text-xs text-zinc-600">— Alfonso Roiget</footer>
+            <footer className="mt-2 font-mono text-xs text-zinc-600">— {site.fullName}</footer>
           </blockquote>
 
           <div className="mt-8 flex flex-wrap gap-3">

@@ -1,6 +1,6 @@
 export const site = {
   name: "Fonsi",
-  fullName: "Alfonso Roiget",
+  fullName: "Alfons Roiget",
   role: "AI Builder & Creador de contenido",
   location: "Honduras",
   tagline:
@@ -10,8 +10,6 @@ export const site = {
 
 Mi objetivo es claro: dedicarme al 100% a la inteligencia artificial — agentes, automatización y productos que resuelvan problemas reales. Este portfolio es la prueba de ese camino.`,
   email: "alfonsroiget@gmail.com",
-  phone: "661911574",
-  phoneDisplay: "661 911 574",
   phoneTel: "+34661911574",
   whatsapp: "34661911574",
   github: "https://github.com/Fonsi44",

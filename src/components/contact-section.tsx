@@ -1,7 +1,13 @@
 import { Code2, Mail, MessageCircle, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
-const channels = [
+const channels: {
+  icon: typeof Mail;
+  label: string;
+  value?: string;
+  href: string;
+  cta: string;
+}[] = [
   {
     icon: Mail,
     label: "Email",
@@ -12,14 +18,12 @@ const channels = [
   {
     icon: Phone,
     label: "Teléfono",
-    value: site.phoneDisplay,
     href: `tel:${site.phoneTel}`,
     cta: "Llamar",
   },
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: site.phoneDisplay,
     href: `https://wa.me/${site.whatsapp}`,
     cta: "Escribir por WhatsApp",
   },
@@ -69,9 +73,13 @@ export function ContactSection() {
               <p className="font-mono text-[10px] tracking-widest text-zinc-600 uppercase">
                 {channel.label}
               </p>
-              <p className="mt-1 text-lg font-medium text-white">{channel.value}</p>
+              {channel.value ? (
+                <p className="mt-1 text-lg font-medium text-white">{channel.value}</p>
+              ) : (
+                <p className="mt-1 text-lg font-medium text-white">{channel.cta}</p>
+              )}
               <p className="mt-3 text-sm text-cyan-400 opacity-0 transition group-hover:opacity-100">
-                {channel.cta} →
+                {channel.value ? `${channel.cta} →` : "Abrir →"}
               </p>
             </a>
           ))}

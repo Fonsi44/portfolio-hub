@@ -17,7 +17,7 @@ export default function Home() {
       >
         Saltar al contenido
       </a>
-      <main id="main" className="pb-28">
+      <main id="main">
         <Hero />
         <AboutSection />
         <JourneySection />
