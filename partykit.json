@@ -1,0 +1,5 @@
+{
+  "name": "portfolio-live-party",
+  "main": "party/index.ts",
+  "compatibilityDate": "2024-09-01"
+}

@@ -1,3 +1,5 @@
+import { LiveEcosystemBar } from "@/components/live-ecosystem-bar";
+import { LiveHubCursors } from "@/components/live-hub-cursors";
 import { AboutSection } from "@/components/about-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
@@ -15,7 +17,7 @@ export default function Home() {
       >
         Saltar al contenido
       </a>
-      <main id="main">
+      <main id="main" className="pb-28">
         <Hero />
         <AboutSection />
         <JourneySection />
@@ -23,6 +25,8 @@ export default function Home() {
         <SkillsSection />
         <ContactSection />
       </main>
+      <LiveHubCursors />
+      <LiveEcosystemBar />
       <Footer />
     </>
   );
