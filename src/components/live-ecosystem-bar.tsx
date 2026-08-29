@@ -30,9 +30,11 @@ const APP_LABELS: Record<AppId, string> = {
   landing: "Pulse",
   collab: "Collab",
   automation: "FlowForge",
+  support: "SignalDesk",
+  trace: "ModelTrace",
 };
 
-const FLAGSHIP_APPS: AppId[] = ["ai-agent", "saas", "collab"];
+const FLAGSHIP_APPS: AppId[] = ["ai-agent", "saas", "collab", "support"];
 
 export function LiveEcosystemBar() {
   const [name] = useState(randomName);

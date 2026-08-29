@@ -1,6 +1,6 @@
 import type * as Party from "partykit/server";
 
-type AppId = "hub" | "ai-agent" | "saas" | "landing" | "collab" | "automation";
+type AppId = "hub" | "ai-agent" | "saas" | "landing" | "collab" | "automation" | "support" | "trace";
 
 type EcosystemUser = {
   id: string;

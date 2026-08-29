@@ -78,6 +78,7 @@ export type Project = {
   gradient: string;
   icon: string;
   year: string;
+  scopeBadges?: string[];
 };
 
 export const projects: Project[] = [
@@ -114,6 +115,7 @@ export const projects: Project[] = [
     gradient: "from-emerald-500/20 via-teal-500/10 to-cyan-500/5",
     icon: "⚖️",
     year: "2025–2026",
+    scopeBadges: ["Production", "RAG", "Auth"],
   },
   {
     slug: "ai-document-agent",
@@ -122,7 +124,7 @@ export const projects: Project[] = [
     description:
       "Agente IA con archivo documental, historial persistente, ⌘K y tool calling real con Gemini.",
     longDescription:
-      "Producto flagship de IA documental: workspace de 4 paneles, 8 documentos indexados, sesiones de chat persistentes, command palette, export markdown, preview con citas clicables y feed live. El agente usa herramientas tipadas — no es un chat genérico.",
+      "Producto flagship de IA documental: sube archivos .txt/.md/.csv, indexa en sesión, chat con historial persistente, command palette ⌘K, export markdown y preview con citas clicables. El agente usa herramientas tipadas con Gemini — no es un chat genérico.",
     stack: ["Next.js", "Vercel AI SDK", "Gemini 3.6 Flash", "Zod", "Partykit", "TypeScript"],
     liveUrl: "https://ai-document-agent.vercel.app",
     repoUrl: "https://github.com/Fonsi44/ai-document-agent",
@@ -130,10 +132,10 @@ export const projects: Project[] = [
     tier: "flagship",
     category: "ai",
     highlights: [
-      "Historial de consultas persistente",
+      "Upload real .txt/.md/.csv en sesión",
       "⌘K — buscar docs y lanzar queries",
       "Tool cards + citas DOC-xxx clicables",
-      "Export markdown · onboarding guiado",
+      "Summarize con Gemini 3.6 Flash",
     ],
     architecture: [
       "Next.js App Router + Vercel AI SDK streaming",
@@ -145,6 +147,7 @@ export const projects: Project[] = [
     gradient: "from-violet-500/20 via-purple-500/10 to-fuchsia-500/5",
     icon: "🤖",
     year: "2026",
+    scopeBadges: ["Gemini API", "Live sync", "File upload"],
   },
   {
     slug: "saas-dashboard",
@@ -176,6 +179,7 @@ export const projects: Project[] = [
     gradient: "from-sky-500/20 via-blue-500/10 to-indigo-500/5",
     icon: "📊",
     year: "2026",
+    scopeBadges: ["Live sync", "Mock data"],
   },
   {
     slug: "animated-landing",
@@ -200,6 +204,7 @@ export const projects: Project[] = [
     gradient: "from-orange-500/20 via-rose-500/10 to-amber-500/5",
     icon: "✨",
     year: "2026",
+    scopeBadges: ["Live sync", "Real FPS"],
   },
   {
     slug: "realtime-collab",
@@ -217,8 +222,8 @@ export const projects: Project[] = [
     category: "fullstack",
     highlights: [
       "Plantillas: Retro, Brainstorm, Kanban",
-      "Undo ⌘Z · export JSON",
-      "Salas ?room= compartibles",
+      "Guía interactiva + centro de ayuda",
+      "Import/export JSON · salas ?room=",
       "Live cursors multi-tab",
     ],
     architecture: [
@@ -231,6 +236,7 @@ export const projects: Project[] = [
     gradient: "from-rose-500/20 via-orange-500/10 to-amber-500/5",
     icon: "🔄",
     year: "2026",
+    scopeBadges: ["Live sync", "WebSockets"],
   },
   {
     slug: "automation-workflows",
@@ -239,7 +245,7 @@ export const projects: Project[] = [
     description:
       "Orquestador con 3 plantillas, config por paso, payload JSON y historial de ejecuciones.",
     longDescription:
-      "FlowForge: elige entre Lead Enrichment, Invoice Processing o Support Triage. Configura cada step, lanza con payload de prueba y observa Live Run Log + historial con duraciones e I/O simulado — todo broadcast via Partykit.",
+      "FlowForge: elige entre Lead Enrichment, Invoice Processing o Support Triage. Configura cada step, lanza con payload de prueba y observa Live Run Log + historial. El paso AI llama a Gemini via /api/enrich — con fallback mock si falta API key.",
     stack: ["Next.js", "Partykit", "partysocket", "TypeScript", "Tailwind v4"],
     liveUrl: "https://automation-workflows.vercel.app",
     repoUrl: "https://github.com/Fonsi44/automation-workflows",
@@ -255,6 +261,64 @@ export const projects: Project[] = [
     gradient: "from-lime-500/20 via-green-500/10 to-emerald-500/5",
     icon: "⚙️",
     year: "2026",
+    scopeBadges: ["Gemini API", "Live sync", "Mock workflow"],
+  },
+  {
+    slug: "ai-support-inbox",
+    title: "SignalDesk",
+    subtitle: "AI Support Inbox",
+    description:
+      "Bandeja de soporte con triage IA: Gemini clasifica tickets, prioriza urgencia y redacta borradores de respuesta.",
+    longDescription:
+      "SignalDesk centraliza tickets de soporte y usa Gemini para clasificar intención (billing, técnico, ventas), asignar prioridad y generar borradores de respuesta listos para revisión. Inbox unificado, cola por agente y feed de actividad en vivo via Partykit — pensado para equipos que quieren IA en el flujo sin perder control humano.",
+    stack: ["Next.js", "Vercel AI SDK", "Gemini 3.6 Flash", "Partykit", "TypeScript"],
+    liveUrl: "https://ai-support-inbox.vercel.app",
+    repoUrl: "https://github.com/Fonsi44/ai-support-inbox",
+    featured: true,
+    tier: "flagship",
+    category: "ai",
+    highlights: [
+      "Triage automático con Gemini",
+      "Prioridad y routing por intención",
+      "Borradores de respuesta editables",
+      "Feed de actividad en vivo",
+    ],
+    architecture: [
+      "Next.js App Router + Vercel AI SDK",
+      "Gemini 3.6 Flash para clasificación y drafts",
+      "Partykit room para presencia y eventos de cola",
+      "Inbox con estados: new → triaged → assigned → resolved",
+    ],
+    tryHint: "Abre un ticket de prueba y revisa el borrador generado por IA",
+    gradient: "from-indigo-500/20 via-blue-500/10 to-violet-500/5",
+    icon: "📬",
+    year: "2026",
+    scopeBadges: ["Gemini API", "Live sync"],
+  },
+  {
+    slug: "llm-trace-lab",
+    title: "ModelTrace",
+    subtitle: "LLM Observability Lab",
+    description:
+      "Panel de observabilidad LLM: ejecuta prompts con Gemini, captura latencia/tokens y explora traces de sesión.",
+    longDescription:
+      "ModelTrace simula un dashboard de observabilidad para LLMs en producción. Ejecuta prompts reales con Gemini 3.6 Flash, registra latencia, tokens de entrada/salida y permite filtrar traces por estado. Métricas de sesión (p95, error rate) se calculan sobre runs locales — ideal para demostrar MLOps/LLMOps sin infra pesada.",
+    stack: ["Next.js", "Vercel AI SDK", "Gemini 3.6 Flash", "TypeScript", "Tailwind v4"],
+    liveUrl: "https://llm-trace-lab.vercel.app",
+    repoUrl: "https://github.com/Fonsi44/llm-trace-lab",
+    featured: false,
+    tier: "lab",
+    category: "ai",
+    highlights: [
+      "Runs reales con Gemini 3.6 Flash",
+      "Traces expandibles con I/O",
+      "Métricas p95 y tokens/min",
+      "Filtros ok / fallback / error",
+    ],
+    gradient: "from-violet-500/20 via-purple-500/10 to-fuchsia-500/5",
+    icon: "📡",
+    year: "2026",
+    scopeBadges: ["Gemini API", "Session traces"],
   },
 ];
 

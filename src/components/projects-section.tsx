@@ -10,6 +10,22 @@ import {
   productionProjects,
 } from "@/lib/site";
 
+function ScopeBadges({ badges }: { badges?: string[] }) {
+  if (!badges?.length) return null;
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {badges.map((badge) => (
+        <span
+          key={badge}
+          className="rounded-full border border-white/10 bg-zinc-950/80 px-2 py-0.5 font-mono text-[10px] text-zinc-400"
+        >
+          {badge}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function FlagshipCard({ project, index }: { project: Project; index: number }) {
   const reduced = useReducedMotion();
 
@@ -38,6 +54,9 @@ function FlagshipCard({ project, index }: { project: Project; index: number }) {
           </div>
           <h3 className="text-3xl font-bold text-white md:text-4xl">{project.title}</h3>
           <p className="mt-1 text-lg text-cyan-400/90">{project.subtitle}</p>
+          <div className="mt-3">
+            <ScopeBadges badges={project.scopeBadges} />
+          </div>
           <p className="mt-4 text-pretty leading-relaxed text-zinc-300">{project.description}</p>
           <ul className="mt-4 grid gap-1.5 sm:grid-cols-2">
             {project.highlights.map((h) => (
@@ -78,7 +97,10 @@ function CompactCard({ project }: { project: Project }) {
     >
       <span className="text-2xl">{project.icon}</span>
       <h3 className="mt-2 font-semibold text-white">{project.title}</h3>
-      <p className="mt-1 text-sm text-zinc-400">{project.description}</p>
+      <div className="mt-2">
+        <ScopeBadges badges={project.scopeBadges} />
+      </div>
+      <p className="mt-2 text-sm text-zinc-400">{project.description}</p>
       <a
         href={project.liveUrl}
         target="_blank"
@@ -105,7 +127,7 @@ export function ProjectsSection() {
             Pocos proyectos. Mucha profundidad.
           </h2>
           <p className="mt-3 max-w-2xl text-pretty text-zinc-400">
-            Tres herramientas interactivas diseñadas para usarse de verdad — no demos
+            Cuatro productos interactivos con IA real (Gemini 3.6 Flash) — no demos vacíos
             superficiales. Cada una con identidad propia, backend live y flujos completos.
           </p>
         </div>

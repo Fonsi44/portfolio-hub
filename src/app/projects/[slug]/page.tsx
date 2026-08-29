@@ -61,6 +61,18 @@ export default async function ProjectPage({ params }: Props) {
             </div>
             <h1 className="text-3xl font-bold text-white md:text-4xl">{project.title}</h1>
             <p className="mt-1 text-cyan-400">{project.subtitle}</p>
+            {project.scopeBadges && project.scopeBadges.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {project.scopeBadges.map((badge) => (
+                  <span
+                    key={badge}
+                    className="rounded-full border border-white/10 bg-zinc-950/80 px-2 py-0.5 font-mono text-[10px] text-zinc-400"
+                  >
+                    {badge}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
