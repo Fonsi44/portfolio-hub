@@ -1,7 +1,10 @@
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProjectArchitectureFlow } from "@/components/project-architecture-flow";
+import { ProjectDemoLoop } from "@/components/project-demo-loop";
 import { ProjectLivePreview } from "@/components/project-live-preview";
+import { ProjectTryChecklist } from "@/components/project-try-checklist";
 import { getProject, projects, site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -84,6 +87,20 @@ export default async function ProjectPage({ params }: Props) {
           <ProjectLivePreview url={liveUrl} title={project.title} hint={project.tryHint} />
         )}
 
+        {project.architecture && (
+          <ProjectArchitectureFlow title={project.title} steps={project.architecture} />
+        )}
+
+        <ProjectDemoLoop
+          title={project.title}
+          frames={[
+            project.tryHint ?? project.description,
+            ...project.highlights.slice(0, 3),
+          ]}
+        />
+
+        <ProjectTryChecklist tryHint={project.tryHint} steps={project.highlights.slice(0, 3)} />
+
         <div className={`my-8 grid gap-3 ${isFlagship ? "sm:grid-cols-2" : ""}`}>
           {project.highlights.map((h) => (
             <div
@@ -97,9 +114,9 @@ export default async function ProjectPage({ params }: Props) {
         </div>
 
         {project.architecture && (
-          <div className="mb-8 rounded-2xl border border-white/8 bg-zinc-950/50 p-6">
+          <div className="mb-8 rounded-2xl border border-white/8 bg-zinc-950/50 p-6 md:hidden">
             <h2 className="mb-4 font-mono text-xs tracking-widest text-zinc-500 uppercase">
-              Arquitectura
+              Stack técnico
             </h2>
             <ul className="space-y-2">
               {project.architecture.map((line) => (

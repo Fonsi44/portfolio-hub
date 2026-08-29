@@ -1,4 +1,5 @@
 import { Code2, Mail, MessageCircle, Phone } from "lucide-react";
+import { ContactFormAi } from "@/components/contact-form-ai";
 import { site } from "@/lib/site";
 
 const channels: {
@@ -84,6 +85,7 @@ export function ContactSection() {
             </a>
           ))}
         </div>
+        <ContactFormAi />
       </div>
     </section>
   );

@@ -147,7 +147,7 @@ export const projects: Project[] = [
     gradient: "from-violet-500/20 via-purple-500/10 to-fuchsia-500/5",
     icon: "🤖",
     year: "2026",
-    scopeBadges: ["Gemini API", "Live sync", "File upload"],
+    scopeBadges: ["Gemini API", "Live sync", "File upload", "Honest demo"],
   },
   {
     slug: "saas-dashboard",
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     gradient: "from-sky-500/20 via-blue-500/10 to-indigo-500/5",
     icon: "📊",
     year: "2026",
-    scopeBadges: ["Live sync", "Mock data"],
+    scopeBadges: ["Live sync", "Mock data", "Honest demo"],
   },
   {
     slug: "animated-landing",
@@ -201,10 +201,17 @@ export const projects: Project[] = [
       "Marquee infinito + ScrollTrigger reveals",
       "Reduced motion support",
     ],
+    architecture: [
+      "PerformanceObserver para LCP, CLS, INP en cliente",
+      "GSAP ScrollTrigger + toggle Motion ON/OFF con baseline",
+      "Partykit room «landing» para viewers y FPS feed",
+      "AI Motion Report via /api/audit con métricas JSON",
+    ],
+    tryHint: "Pulsa «Motion OFF» y compara métricas · luego «AI Motion Report»",
     gradient: "from-orange-500/20 via-rose-500/10 to-amber-500/5",
     icon: "✨",
     year: "2026",
-    scopeBadges: ["Live sync", "Real FPS"],
+    scopeBadges: ["Live sync", "Real FPS", "Honest demo"],
   },
   {
     slug: "realtime-collab",
@@ -236,7 +243,7 @@ export const projects: Project[] = [
     gradient: "from-rose-500/20 via-orange-500/10 to-amber-500/5",
     icon: "🔄",
     year: "2026",
-    scopeBadges: ["Live sync", "WebSockets"],
+    scopeBadges: ["Live sync", "WebSockets", "Honest demo"],
   },
   {
     slug: "automation-workflows",
@@ -258,10 +265,17 @@ export const projects: Project[] = [
       "Live Run Log con duraciones e I/O",
       "Historial de ejecuciones locales",
     ],
+    architecture: [
+      "3 rutas Gemini: /api/enrich, classify, extract",
+      "Config model + temperature pasada al API",
+      "Webhook simulator dispara runs completos",
+      "Traces IA → ModelTrace via localStorage compartido",
+    ],
+    tryHint: "Run Support Triage · abre ModelTrace y verifica el trace de FlowForge",
     gradient: "from-lime-500/20 via-green-500/10 to-emerald-500/5",
     icon: "⚙️",
     year: "2026",
-    scopeBadges: ["Gemini API", "Live sync", "Mock workflow"],
+    scopeBadges: ["Gemini API", "Live sync", "Mock workflow", "Honest demo"],
   },
   {
     slug: "ai-support-inbox",
@@ -293,7 +307,7 @@ export const projects: Project[] = [
     gradient: "from-indigo-500/20 via-blue-500/10 to-violet-500/5",
     icon: "📬",
     year: "2026",
-    scopeBadges: ["Gemini API", "Live sync"],
+    scopeBadges: ["Gemini API", "Live sync", "Honest demo"],
   },
   {
     slug: "llm-trace-lab",
@@ -315,10 +329,17 @@ export const projects: Project[] = [
       "Métricas p95 y tokens/min",
       "Filtros ok / fallback / error",
     ],
+    architecture: [
+      "Runs via /api/run con captura latency/tokens",
+      "Cost estimator FinOps + export OTel JSON",
+      "Compare traces con explicación Gemini",
+      "Ingest cross-app: FlowForge, Partykit trace-new",
+    ],
+    tryHint: "Ejecuta un prompt · compara 2 traces · exporta OTel JSON",
     gradient: "from-violet-500/20 via-purple-500/10 to-fuchsia-500/5",
     icon: "📡",
     year: "2026",
-    scopeBadges: ["Gemini API", "Session traces"],
+    scopeBadges: ["Gemini API", "Session traces", "Honest demo"],
   },
 ];
 

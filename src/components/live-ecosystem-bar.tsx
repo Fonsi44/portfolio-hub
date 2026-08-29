@@ -43,6 +43,7 @@ export function LiveEcosystemBar() {
   const [activities, setActivities] = useState<ActivityEvent[]>([]);
   const [connected, setConnected] = useState(false);
   const [open, setOpen] = useState(false);
+  const [narrative, setNarrative] = useState<string | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
@@ -71,7 +72,27 @@ export function LiveEcosystemBar() {
         setActivities(data.activities);
       }
       if (data.type === "activity-new") {
-        setActivities((prev) => [...prev.slice(-19), data.event]);
+        setActivities((prev) => {
+          const next = [...prev.slice(-19), data.event];
+          if (next.length >= 3 && next.length % 3 === 0) {
+            fetch("/api/narrative", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                events: next.slice(-5).map((a: ActivityEvent) => ({
+                  app: a.app,
+                  user: a.user,
+                  action: a.action,
+                  detail: a.detail,
+                })),
+              }),
+            })
+              .then((r) => r.json())
+              .then((d) => d.narrative && setNarrative(d.narrative))
+              .catch(() => {});
+          }
+          return next;
+        });
       }
     },
   });
@@ -202,6 +223,11 @@ export function LiveEcosystemBar() {
           </div>
 
           <div className="max-h-48 overflow-y-auto px-3 py-3 scrollbar-none">
+            {narrative && (
+              <p className="mb-3 rounded-lg border border-violet-500/20 bg-violet-500/5 p-2 font-mono text-[10px] leading-relaxed text-violet-200">
+                {narrative}
+              </p>
+            )}
             <div className="mb-2 flex items-center gap-1.5 font-mono text-[9px] tracking-widest text-zinc-600 uppercase">
               <Activity className="h-3 w-3 text-violet-400" aria-hidden="true" />
               Actividad
