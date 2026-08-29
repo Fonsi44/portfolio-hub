@@ -54,8 +54,8 @@ export function Header() {
           </a>
           <a
             href={`mailto:${site.email}`}
-            className="hidden rounded-lg p-2 text-zinc-400 transition hover:bg-white/5 hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-400 sm:block"
-            aria-label="Email"
+            className="rounded-lg p-2 text-zinc-400 transition hover:bg-white/5 hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-400"
+            aria-label="Enviar correo"
           >
             <Mail className="h-4 w-4" />
           </a>

@@ -12,9 +12,8 @@ const channels: {
   {
     icon: Mail,
     label: "Email",
-    value: site.email,
     href: `mailto:${site.email}`,
-    cta: "Enviar email",
+    cta: "Enviar correo",
   },
   {
     icon: Phone,
@@ -80,7 +79,7 @@ export function ContactSection() {
                 <p className="mt-1 text-lg font-medium text-white">{channel.cta}</p>
               )}
               <p className="mt-3 text-sm text-cyan-400 opacity-0 transition group-hover:opacity-100">
-                {channel.value ? `${channel.cta} →` : "Abrir →"}
+                {channel.cta} →
               </p>
             </a>
           ))}

@@ -56,19 +56,25 @@ export function Hero() {
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <a
-            href="#journey"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 px-7 py-3.5 text-sm font-semibold text-zinc-950 transition hover:from-cyan-300 hover:to-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030306]"
+            href="#showcase"
+            className="group inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-7 py-3.5 text-sm font-semibold text-emerald-300 transition hover:border-emerald-400/50 hover:bg-emerald-500/15 focus-visible:ring-2 focus-visible:ring-emerald-400"
           >
             <Sparkles className="h-4 w-4" aria-hidden="true" />
-            Conoce mi camino
+            Proyecto legal en producción
             <ArrowDown className="h-4 w-4 transition group-hover:translate-y-0.5" aria-hidden="true" />
           </a>
           <a
-            href={`mailto:${site.email}`}
+            href="#journey"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 px-7 py-3.5 text-sm font-semibold text-zinc-950 transition hover:from-cyan-300 hover:to-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            Conoce mi camino
+          </a>
+          <a
+            href="#contact"
             className="inline-flex items-center gap-2 rounded-full border border-white/10 px-7 py-3.5 text-sm font-medium text-zinc-300 transition hover:border-cyan-500/30 hover:bg-cyan-500/5 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
-            Escríbeme
+            Enviar correo
           </a>
           <a
             href={site.github}
@@ -88,8 +94,8 @@ export function Hero() {
           className="mt-20 grid grid-cols-1 gap-4 border-t border-white/5 pt-10 sm:grid-cols-3 md:gap-8"
         >
           {[
-            { value: "Comercial", label: "Mi origen" },
-            { value: "4", label: "Productos flagship" },
+            { value: "1", label: "Proyecto legal entregado" },
+            { value: "4", label: "Demos interactivos con IA" },
             { value: "100%", label: "Objetivo: vivir de IA" },
           ].map((stat) => (
             <div key={stat.label}>

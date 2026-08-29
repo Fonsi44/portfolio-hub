@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 const TIER_LABELS = {
-  flagship: "Producto flagship",
-  production: "En producción",
+  flagship: "Demo interactivo",
+  production: "Proyecto finalizado",
   lab: "Lab",
 } as const;
 
@@ -35,6 +35,7 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
 
   const isFlagship = project.tier === "flagship";
+  const isProduction = project.tier === "production" || project.completed;
   const liveUrl =
     project.slug === "realtime-collab"
       ? `${project.liveUrl}?room=portfolio-preview`
@@ -42,7 +43,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <div className="min-h-screen px-6 py-24">
-      <div className={`mx-auto ${isFlagship ? "max-w-4xl" : "max-w-3xl"}`}>
+      <div className={`mx-auto ${isFlagship || isProduction ? "max-w-4xl" : "max-w-3xl"}`}>
         <Link
           href="/#projects"
           className="mb-8 inline-flex items-center gap-2 text-sm text-zinc-500 transition hover:text-cyan-400 focus-visible:text-cyan-400"
@@ -57,9 +58,18 @@ export default async function ProjectPage({ params }: Props) {
           </span>
           <div>
             <div className="mb-2 flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-2.5 py-0.5 font-mono text-[10px] tracking-widest text-cyan-400 uppercase">
+              <span
+                className={`rounded-full border px-2.5 py-0.5 font-mono text-[10px] tracking-widest uppercase ${
+                  isProduction
+                    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
+                    : "border-cyan-500/20 bg-cyan-500/10 text-cyan-400"
+                }`}
+              >
                 {TIER_LABELS[project.tier]}
               </span>
+              {project.clientName && (
+                <span className="font-mono text-xs text-zinc-500">Cliente · {project.clientName}</span>
+              )}
               <span className="font-mono text-xs text-zinc-600">{project.year}</span>
             </div>
             <h1 className="text-3xl font-bold text-white md:text-4xl">{project.title}</h1>
@@ -147,7 +157,7 @@ export default async function ProjectPage({ params }: Props) {
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:from-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <ExternalLink className="h-4 w-4" aria-hidden="true" />
-            {isFlagship ? "Usar producto" : "Abrir demo live"}
+            {isFlagship ? "Usar demo" : isProduction ? "Visitar web en producción" : "Abrir demo live"}
           </a>
           <a
             href={project.repoUrl}

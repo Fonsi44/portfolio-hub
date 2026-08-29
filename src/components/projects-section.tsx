@@ -4,11 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ExternalLink, FlaskConical } from "lucide-react";
 import Link from "next/link";
 import type { Project } from "@/lib/site";
-import {
-  flagshipProjects,
-  labProjects,
-  productionProjects,
-} from "@/lib/site";
+import { flagshipProjects, labProjects } from "@/lib/site";
 
 function ScopeBadges({ badges }: { badges?: string[] }) {
   if (!badges?.length) return null;
@@ -49,7 +45,7 @@ function FlagshipCard({ project, index }: { project: Project; index: number }) {
               {project.icon}
             </span>
             <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-0.5 font-mono text-[10px] tracking-widest text-cyan-400 uppercase">
-              Producto flagship
+              Demo interactivo
             </span>
           </div>
           <h3 className="text-3xl font-bold text-white md:text-4xl">{project.title}</h3>
@@ -73,7 +69,7 @@ function FlagshipCard({ project, index }: { project: Project; index: number }) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:from-cyan-300 hover:to-cyan-400"
           >
-            Abrir producto
+            Abrir demo
             <ExternalLink className="h-4 w-4" aria-hidden="true" />
           </a>
           <Link
@@ -121,14 +117,14 @@ export function ProjectsSection() {
       <div className="mx-auto max-w-5xl">
         <div className="mb-16">
           <p className="mb-2 font-mono text-xs tracking-[0.3em] text-cyan-400/70 uppercase">
-            Productos
+            Demos interactivos
           </p>
           <h2 className="text-balance text-3xl font-bold text-white md:text-4xl">
-            Pocos proyectos. Mucha profundidad.
+            Productos con IA en vivo
           </h2>
           <p className="mt-3 max-w-2xl text-pretty text-zinc-400">
-            Cuatro productos interactivos con IA real (Gemini 3.6 Flash) — no demos vacíos
-            superficiales. Cada una con identidad propia, backend live y flujos completos.
+            Además del proyecto legal entregado arriba, construyo demos interactivos con Gemini 3.6
+            Flash — cada uno con backend live, flujos completos y badges honestos sobre el alcance.
           </p>
         </div>
 
@@ -137,19 +133,6 @@ export function ProjectsSection() {
             <FlagshipCard key={project.slug} project={project} index={i} />
           ))}
         </div>
-
-        {productionProjects.length > 0 && (
-          <div className="mt-20">
-            <p className="mb-6 font-mono text-xs tracking-[0.3em] text-emerald-400/70 uppercase">
-              En producción
-            </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              {productionProjects.map((project) => (
-                <CompactCard key={project.slug} project={project} />
-              ))}
-            </div>
-          </div>
-        )}
 
         {labProjects.length > 0 && (
           <div className="mt-16 rounded-2xl border border-white/5 bg-white/[0.02] p-6">

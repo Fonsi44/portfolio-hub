@@ -40,6 +40,16 @@ export function AboutSection() {
             {site.location}
           </p>
           <p className="mt-6 text-pretty leading-relaxed text-zinc-400">{site.bio}</p>
+          <p className="mt-4 text-pretty text-sm leading-relaxed text-zinc-500">
+            Entregué la plataforma digital de{" "}
+            <a
+              href="#showcase"
+              className="text-emerald-400/90 underline decoration-emerald-500/30 underline-offset-2 transition hover:text-emerald-300"
+            >
+              Pineda y Asociados
+            </a>
+            — web legal sofisticada, SEO posicionado y producto en producción real.
+          </p>
 
           <div className="mt-8 space-y-4">
             {traits.map((trait) => (

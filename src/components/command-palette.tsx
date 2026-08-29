@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import { site, flagshipProjects, labProjects, productionProjects } from "@/lib/site";
+import { site, flagshipProjects, labProjects, showcaseProject } from "@/lib/site";
 
 type Props = {
   open: boolean;
@@ -64,7 +64,32 @@ export function CommandPalette({ open, onOpenChange }: Props) {
             Sin resultados.
           </Command.Empty>
 
-          <Command.Group heading="Productos flagship">
+          {showcaseProject && (
+            <Command.Group heading="Proyecto entregado">
+              <Command.Item
+                value={`production ${showcaseProject.title} legal despacho`}
+                onSelect={() => run(() => window.open(showcaseProject.liveUrl, "_blank"))}
+                className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-emerald-200 aria-selected:bg-emerald-500/10 aria-selected:text-emerald-200"
+              >
+                <span className="text-lg">{showcaseProject.icon}</span>
+                <div className="flex-1">
+                  <p className="font-medium">{showcaseProject.title}</p>
+                  <p className="text-xs text-zinc-500">{showcaseProject.subtitle}</p>
+                </div>
+                <ExternalLink className="h-3.5 w-3.5 opacity-50" aria-hidden="true" />
+              </Command.Item>
+              <Command.Item
+                value={`case study ${showcaseProject.title}`}
+                onSelect={() => run(() => router.push(`/projects/${showcaseProject.slug}`))}
+                className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-zinc-300 aria-selected:bg-emerald-500/10"
+              >
+                <ArrowUpRight className="h-4 w-4 text-emerald-500/70" aria-hidden="true" />
+                <span>Case study — {showcaseProject.title}</span>
+              </Command.Item>
+            </Command.Group>
+          )}
+
+          <Command.Group heading="Demos interactivos">
             {flagshipProjects.map((p) => (
               <Command.Item
                 key={p.slug}
@@ -83,7 +108,7 @@ export function CommandPalette({ open, onOpenChange }: Props) {
           </Command.Group>
 
           <Command.Group heading="Case studies">
-            {[...productionProjects, ...labProjects].map((p) => (
+            {[...labProjects].map((p) => (
               <Command.Item
                 key={p.slug}
                 value={`${p.title} ${p.subtitle}`}
@@ -126,7 +151,7 @@ export function CommandPalette({ open, onOpenChange }: Props) {
               className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-zinc-300 aria-selected:bg-white/5"
             >
               <Mail className="h-4 w-4 text-zinc-500" aria-hidden="true" />
-              <span>Email — {site.email}</span>
+              <span>Enviar correo</span>
             </Command.Item>
             <Command.Item
               value="llamar telefono"

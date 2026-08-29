@@ -79,17 +79,21 @@ export type Project = {
   icon: string;
   year: string;
   scopeBadges?: string[];
+  /** Client-facing name when the product serves a real organization */
+  clientName?: string;
+  /** True when the project is shipped and live — not a portfolio demo */
+  completed?: boolean;
 };
 
 export const projects: Project[] = [
   {
     slug: "justicia-verdadera",
-    title: "Justicia-Verdadera",
-    subtitle: "Legal SaaS Platform",
+    title: "Pineda y Asociados",
+    subtitle: "Justicia-Verdadera · Despacho legal digital",
     description:
-      "Plataforma jurídica integral: SEO, blog, calculadora de penas, intranet SGIE y RAG con pgvector.",
+      "Web corporativa sofisticada para bufete de abogados: SEO posicionado, blog jurídico, calculadora de penas, intranet SGIE y asistente con RAG en producción.",
     longDescription:
-      "Proyecto de producción para despacho legal en Honduras. Web pública indexable, auth JWT + 2FA TOTP, RBAC, gestión de expedientes, chat con motor de reglas local y búsqueda semántica con pgvector en Neon PostgreSQL. CI completo con Vitest y Playwright.",
+      "Proyecto finalizado y en producción para Pineda y Asociados (Honduras). Plataforma jurídica integral con identidad visual premium, indexación SEO (JSON-LD, metadata, IndexNow), blog de contenido legal, calculadora de penas pública, zona privada con auth JWT + 2FA TOTP, RBAC, gestión de expedientes y chat jurídico con búsqueda semántica pgvector en Neon PostgreSQL. CI completo: Vitest + Playwright.",
     stack: [
       "Next.js 16",
       "React 19",
@@ -106,16 +110,25 @@ export const projects: Project[] = [
     featured: true,
     tier: "production",
     category: "fullstack",
+    completed: true,
+    clientName: "Pineda y Asociados",
     highlights: [
+      "Proyecto entregado y operativo en producción",
+      "SEO-first: posicionamiento orgánico y JSON-LD",
       "Auth JWT + 2FA TOTP con RBAC granular",
-      "RAG semántico con pgvector en producción",
-      "CI: ESLint, TypeScript, Vitest, Playwright",
-      "SEO-first: JSON-LD, metadata, IndexNow",
+      "RAG semántico con pgvector para consultas jurídicas",
     ],
-    gradient: "from-emerald-500/20 via-teal-500/10 to-cyan-500/5",
+    architecture: [
+      "Web pública indexable + intranet SGIE aislada por rol",
+      "Blog jurídico y calculadora de penas como captación SEO",
+      "Motor de reglas local + pgvector en Neon PostgreSQL",
+      "CI: ESLint, TypeScript, Vitest, Playwright en cada PR",
+    ],
+    tryHint: "Explora el blog, la calculadora de penas y la experiencia de marca del despacho",
+    gradient: "from-emerald-500/25 via-teal-500/15 to-cyan-500/5",
     icon: "⚖️",
     year: "2025–2026",
-    scopeBadges: ["Production", "RAG", "Auth"],
+    scopeBadges: ["Proyecto finalizado", "SEO posicionado", "Producción", "RAG"],
   },
   {
     slug: "ai-document-agent",
@@ -364,7 +377,8 @@ export const skills = [
 export const navItems = [
   { href: "#about", label: "Sobre mí" },
   { href: "#journey", label: "Mi camino" },
-  { href: "#projects", label: "Proyectos" },
+  { href: "#showcase", label: "Proyecto legal" },
+  { href: "#projects", label: "Demos IA" },
   { href: "#stack", label: "Stack" },
   { href: "#contact", label: "Contacto" },
 ];
@@ -375,4 +389,6 @@ export function getProject(slug: string) {
 
 export const flagshipProjects = projects.filter((p) => p.tier === "flagship");
 export const productionProjects = projects.filter((p) => p.tier === "production");
+export const completedProjects = projects.filter((p) => p.completed);
 export const labProjects = projects.filter((p) => p.tier === "lab");
+export const showcaseProject = completedProjects[0] ?? productionProjects[0];
