@@ -75,7 +75,7 @@ export function Hero() {
           className="mt-20 grid grid-cols-3 gap-4 border-t border-white/5 pt-10 md:gap-8"
         >
           {[
-            { value: "3+", label: "Proyectos en producción" },
+            { value: "5+", label: "Proyectos en producción" },
             { value: "Next.js 16", label: "Stack principal" },
             { value: "AI + RAG", label: "Especialización" },
           ].map((stat) => (

@@ -75,7 +75,7 @@ export const projects: Project[] = [
       "Agente conversacional con tool calling para analizar, buscar y resumir documentos.",
     longDescription:
       "Demo de agente IA con Vercel AI SDK. El agente busca en una biblioteca de documentos, extrae datos estructurados y genera resúmenes usando herramientas tipadas con Zod. Streaming en tiempo real con visibilidad de herramientas invocadas.",
-    stack: ["Next.js", "Vercel AI SDK", "OpenAI", "Zod", "TypeScript"],
+    stack: ["Next.js", "Vercel AI SDK", "Gemini 3.6 Flash", "Zod", "TypeScript"],
     liveUrl: "https://ai-document-agent.vercel.app",
     repoUrl: "https://github.com/Fonsi44/ai-document-agent",
     featured: true,
@@ -112,6 +112,52 @@ export const projects: Project[] = [
     icon: "📊",
     year: "2026",
   },
+  {
+    slug: "animated-landing",
+    title: "Animated Landing",
+    subtitle: "GSAP Motion Design",
+    description:
+      "Landing con scroll orchestration, parallax, reveals y micro-interacciones vía GSAP ScrollTrigger.",
+    longDescription:
+      "Demo de motion design con GSAP y useGSAP. Hero timeline con stagger, ScrollTrigger en feature cards, glow ambient animado y respeto a prefers-reduced-motion. Mismo design system cyan/dark del portfolio.",
+    stack: ["Next.js", "GSAP", "ScrollTrigger", "useGSAP", "Tailwind v4"],
+    liveUrl: "https://animated-landing-tau.vercel.app",
+    repoUrl: "https://github.com/Fonsi44/animated-landing",
+    featured: true,
+    category: "frontend",
+    highlights: [
+      "Hero timeline con stagger orchestrado",
+      "ScrollTrigger reveals por sección",
+      "Animaciones compositor-friendly (transform/opacity)",
+      "Reduced motion support",
+    ],
+    gradient: "from-cyan-500/20 via-teal-500/10 to-emerald-500/5",
+    icon: "✨",
+    year: "2026",
+  },
+  {
+    slug: "realtime-collab",
+    title: "Realtime Collab",
+    subtitle: "Live Cursors & Notes",
+    description:
+      "Tablero colaborativo con sticky notes compartidas y cursores en vivo vía Partykit WebSockets.",
+    longDescription:
+      "Demo de colaboración en tiempo real. Múltiples usuarios ven cursores live, crean sticky notes sincronizadas y editan texto en conjunto. Backend con Partykit server desplegado en edge.",
+    stack: ["Next.js", "Partykit", "WebSockets", "partysocket", "TypeScript"],
+    liveUrl: "https://realtime-collab.vercel.app",
+    repoUrl: "https://github.com/Fonsi44/realtime-collab",
+    featured: true,
+    category: "fullstack",
+    highlights: [
+      "Live cursors con labels de usuario",
+      "Sticky notes sincronizadas en tiempo real",
+      "Partykit server en edge",
+      "Abre 2 tabs para probar multi-user",
+    ],
+    gradient: "from-rose-500/20 via-orange-500/10 to-amber-500/5",
+    icon: "🔄",
+    year: "2026",
+  },
 ];
 
 export const skills = [
@@ -119,12 +165,12 @@ export const skills = [
   "React 19",
   "TypeScript",
   "Tailwind CSS v4",
-  "PostgreSQL",
-  "Drizzle ORM",
+  "GSAP / ScrollTrigger",
+  "Partykit",
   "Vercel AI SDK",
+  "Gemini 3.6 Flash",
   "RAG / pgvector",
-  "JWT + 2FA",
-  "Vitest",
+  "PostgreSQL",
   "Playwright",
   "GitHub Actions",
 ];
