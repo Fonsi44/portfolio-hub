@@ -272,7 +272,7 @@ export const projects: Project[] = [
     longDescription:
       "SignalDesk centraliza tickets de soporte y usa Gemini para clasificar intención (billing, técnico, ventas), asignar prioridad y generar borradores de respuesta listos para revisión. Inbox unificado, cola por agente y feed de actividad en vivo via Partykit — pensado para equipos que quieren IA en el flujo sin perder control humano.",
     stack: ["Next.js", "Vercel AI SDK", "Gemini 3.6 Flash", "Partykit", "TypeScript"],
-    liveUrl: "https://ai-support-inbox.vercel.app",
+    liveUrl: "https://ai-support-inbox-phi.vercel.app",
     repoUrl: "https://github.com/Fonsi44/ai-support-inbox",
     featured: true,
     tier: "flagship",
