@@ -309,6 +309,20 @@ export default class PortfolioLiveServer implements Party.Server {
         this.room.broadcast(JSON.stringify({ type: "note-move", id: note.id, x: note.x, y: note.y }));
       }
     }
+
+    if (data.type === "note-delete") {
+      const id = data.id as string;
+      this.notes.delete(id);
+      this.room.broadcast(JSON.stringify({ type: "note-delete", id }));
+    }
+
+    if (data.type === "note-color") {
+      const note = this.notes.get(data.id as string);
+      if (note) {
+        note.color = data.color as string;
+        this.room.broadcast(JSON.stringify({ type: "note-color", id: note.id, color: note.color }));
+      }
+    }
   }
 
   private pushActivity(app: AppId, user: string, action: string, detail?: string) {
