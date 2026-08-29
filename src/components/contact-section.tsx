@@ -1,35 +1,36 @@
 import { Code2, Mail } from "lucide-react";
+import { site } from "@/lib/site";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="px-6 py-24">
+    <section id="contact" className="scroll-mt-24 px-6 py-24">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="mb-2 font-mono text-sm tracking-widest text-amber-400/80">
-          CONTACTO
+        <p className="mb-2 font-mono text-xs tracking-[0.3em] text-cyan-400/70 uppercase">
+          Contacto
         </p>
-        <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+        <h2 className="text-balance text-3xl font-bold text-white md:text-4xl">
           ¿Trabajamos juntos?
         </h2>
-        <p className="mb-10 text-zinc-400">
+        <p className="mt-4 text-pretty text-zinc-400">
           Busco oportunidades como desarrollador full-stack. Disponible para
-          proyectos remotos y presenciales en Honduras.
+          proyectos remotos desde {site.location}.
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a
-            href="https://github.com/Fonsi44"
+            href={site.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-amber-300"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 px-7 py-3.5 text-sm font-semibold text-zinc-950 transition hover:from-cyan-300 hover:to-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
-            <Code2 className="h-4 w-4" />
+            <Code2 className="h-4 w-4" aria-hidden="true" />
             Ver GitHub
           </a>
           <a
-            href="mailto:fonsi@example.com"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-zinc-300 transition hover:border-white/20 hover:bg-white/5"
+            href={`mailto:${site.email}`}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-7 py-3.5 text-sm font-medium text-zinc-300 transition hover:border-cyan-500/30 hover:bg-cyan-500/5 focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
-            <Mail className="h-4 w-4" />
-            Enviar email
+            <Mail className="h-4 w-4" aria-hidden="true" />
+            Enviar Email
           </a>
         </div>
       </div>

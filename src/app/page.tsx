@@ -1,6 +1,6 @@
+import { AboutSection } from "@/components/about-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { ProjectsSection } from "@/components/projects-section";
 import { SkillsSection } from "@/components/skills-section";
@@ -8,9 +8,15 @@ import { SkillsSection } from "@/components/skills-section";
 export default function Home() {
   return (
     <>
-      <Header />
-      <main>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-cyan-400 focus:px-4 focus:py-2 focus:text-zinc-950"
+      >
+        Saltar al contenido
+      </a>
+      <main id="main">
         <Hero />
+        <AboutSection />
         <ProjectsSection />
         <SkillsSection />
         <ContactSection />

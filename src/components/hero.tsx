@@ -1,82 +1,88 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowDown, Code2 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDown, Code2, Sparkles } from "lucide-react";
+import { site } from "@/lib/site";
 
 export function Hero() {
-  return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-500/10 blur-[120px]" />
-        <div className="absolute right-1/4 top-2/3 h-[300px] w-[300px] rounded-full bg-violet-500/10 blur-[100px]" />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
-      </div>
+  const reduced = useReducedMotion();
 
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
+  return (
+    <section className="relative flex min-h-screen items-center justify-center px-6 pt-24 pb-16">
+      <div className="relative z-10 mx-auto max-w-5xl text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={reduced ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="mb-4 font-mono text-sm tracking-[0.3em] text-amber-400/80">
-            FULL-STACK · AI AGENTS · HONDURAS
+          {site.available && (
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-xs text-emerald-400">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
+              Disponible para trabajo
+            </div>
+          )}
+
+          <p className="mb-4 font-mono text-xs tracking-[0.35em] text-cyan-400/70 uppercase">
+            {site.role} · {site.location}
           </p>
-          <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
-            Hola, soy{" "}
-            <span className="bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent">
-              Fonsi
+
+          <h1 className="mb-6 text-5xl font-bold leading-[1.05] tracking-tight text-white md:text-7xl lg:text-8xl">
+            <span className="text-balance">
+              Hola, soy{" "}
+              <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                {site.name}
+              </span>
             </span>
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-zinc-400 md:text-xl">
-            Construyo aplicaciones web de producción, agentes IA y plataformas
-            SaaS con Next.js, TypeScript y PostgreSQL.
+
+          <p className="mx-auto mb-10 max-w-2xl text-pretty text-lg leading-relaxed text-zinc-400 md:text-xl">
+            {site.tagline}
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={reduced ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           className="flex flex-wrap items-center justify-center gap-4"
         >
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-amber-300"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 px-7 py-3.5 text-sm font-semibold text-zinc-950 transition hover:from-cyan-300 hover:to-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030306]"
           >
-            Ver proyectos
-            <ArrowDown className="h-4 w-4" />
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
+            Explorar proyectos
+            <ArrowDown className="h-4 w-4 transition group-hover:translate-y-0.5" aria-hidden="true" />
           </a>
           <a
-            href="https://github.com/Fonsi44"
+            href={site.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-zinc-300 transition hover:border-white/20 hover:bg-white/5"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-7 py-3.5 text-sm font-medium text-zinc-300 transition hover:border-cyan-500/30 hover:bg-cyan-500/5 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
-            <Code2 className="h-4 w-4" />
+            <Code2 className="h-4 w-4" aria-hidden="true" />
             GitHub
           </a>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 grid grid-cols-3 gap-6 border-t border-white/5 pt-8"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-20 grid grid-cols-3 gap-4 border-t border-white/5 pt-10 md:gap-8"
         >
           {[
             { value: "3+", label: "Proyectos en producción" },
             { value: "Next.js 16", label: "Stack principal" },
-            { value: "Open", label: "Disponible para trabajo" },
+            { value: "AI + RAG", label: "Especialización" },
           ].map((stat) => (
             <div key={stat.label}>
-              <p className="text-xl font-bold text-white md:text-2xl">{stat.value}</p>
+              <p className="text-xl font-bold tabular-nums text-white md:text-2xl">
+                {stat.value}
+              </p>
               <p className="mt-1 text-xs text-zinc-500">{stat.label}</p>
             </div>
           ))}

@@ -1,34 +1,47 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Syne, IBM_Plex_Mono } from "next/font/google";
+import { AmbientBackground } from "@/components/ambient-background";
+import { CommandProvider } from "@/components/command-provider";
+import { Header } from "@/components/header";
+import { site } from "@/lib/site";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const ibmMono = IBM_Plex_Mono({
+  variable: "--font-ibm-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Fonsi — Full-stack Developer & AI Agents",
-  description:
-    "Portfolio de Fonsi: desarrollador full-stack en Honduras. Next.js, TypeScript, AI agents, RAG y plataformas SaaS en producción.",
+  title: `${site.name} — Full-stack Developer & AI Engineer`,
+  description: site.tagline,
   openGraph: {
-    title: "Fonsi — Full-stack Developer",
-    description: "Web apps, AI agents y SaaS con Next.js & TypeScript",
+    title: `${site.name} — ${site.role}`,
+    description: site.tagline,
     type: "website",
-    url: "https://portfolio-hub-flax.vercel.app",
+    url: site.portfolio,
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${dmSans.variable} ${jetbrainsMono.variable} h-full`}>
-      <body className="min-h-full bg-[#0b0d12] font-sans text-zinc-100 antialiased">
-        {children}
+    <html
+      lang="es"
+      className={`${syne.variable} ${ibmMono.variable} h-full`}
+      style={{ colorScheme: "dark" }}
+    >
+      <body className="min-h-full bg-[#030306] font-sans text-zinc-100 antialiased">
+        <CommandProvider>
+          <AmbientBackground />
+          <Header />
+          {children}
+        </CommandProvider>
       </body>
     </html>
   );
