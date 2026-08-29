@@ -85,7 +85,7 @@ export function Hero() {
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20 grid grid-cols-3 gap-4 border-t border-white/5 pt-10 md:gap-8"
+          className="mt-20 grid grid-cols-1 gap-4 border-t border-white/5 pt-10 sm:grid-cols-3 md:gap-8"
         >
           {[
             { value: "Comercial", label: "Mi origen" },

@@ -61,6 +61,20 @@ export function Header() {
           </a>
         </div>
       </div>
+      <nav
+        aria-label="Secciones"
+        className="flex gap-6 overflow-x-auto border-t border-white/5 px-6 py-2.5 scrollbar-none md:hidden"
+      >
+        {navItems.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className="shrink-0 text-xs text-zinc-400 transition hover:text-cyan-300"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }
