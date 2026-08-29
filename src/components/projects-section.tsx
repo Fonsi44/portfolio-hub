@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { useMemo, useState } from "react";
 import type { Project } from "@/lib/site";
 import { projects } from "@/lib/site";
 
@@ -17,6 +18,8 @@ const categoryColors = {
   ai: "text-violet-400 border-violet-500/20 bg-violet-500/10",
   frontend: "text-sky-400 border-sky-500/20 bg-sky-500/10",
 };
+
+type Filter = "all" | Project["category"];
 
 function ProjectLauncherCard({ project, index }: { project: Project; index: number }) {
   const reduced = useReducedMotion();
@@ -85,6 +88,20 @@ function ProjectLauncherCard({ project, index }: { project: Project; index: numb
 }
 
 export function ProjectsSection() {
+  const [filter, setFilter] = useState<Filter>("all");
+
+  const filtered = useMemo(
+    () => (filter === "all" ? projects : projects.filter((p) => p.category === filter)),
+    [filter],
+  );
+
+  const filters: { id: Filter; label: string }[] = [
+    { id: "all", label: "Todos" },
+    { id: "ai", label: "AI" },
+    { id: "frontend", label: "Frontend" },
+    { id: "fullstack", label: "Full-stack" },
+  ];
+
   return (
     <section id="projects" className="scroll-mt-24 px-6 py-24">
       <div className="mx-auto max-w-6xl">
@@ -107,8 +124,25 @@ export function ProjectsSection() {
           </p>
         </div>
 
+        <div className="mb-8 flex flex-wrap gap-2">
+          {filters.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              onClick={() => setFilter(f.id)}
+              className={`rounded-full border px-4 py-1.5 text-xs font-medium transition ${
+                filter === f.id
+                  ? "border-cyan-500/40 bg-cyan-500/10 text-cyan-300"
+                  : "border-white/10 text-zinc-500 hover:border-white/20 hover:text-zinc-300"
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
+          {filtered.map((project, i) => (
             <ProjectLauncherCard key={project.slug} project={project} index={i} />
           ))}
         </div>
