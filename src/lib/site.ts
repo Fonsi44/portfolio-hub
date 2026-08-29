@@ -203,6 +203,29 @@ export const projects: Project[] = [
     icon: "🔄",
     year: "2026",
   },
+  {
+    slug: "automation-workflows",
+    title: "FlowForge",
+    subtitle: "AI Automation Workflows",
+    description:
+      "Orquestación visual de workflows con ejecución en vivo y log compartido vía Partykit.",
+    longDescription:
+      "Demo de automatización: pipeline Trigger → AI Agent → Transform → Notify. Cada ejecución se transmite en tiempo real al Live Run Log de todos los usuarios conectados. Estética terminal matrix green.",
+    stack: ["Next.js", "Partykit", "partysocket", "TypeScript", "Tailwind v4"],
+    liveUrl: "https://automation-workflows.vercel.app",
+    repoUrl: "https://github.com/Fonsi44/automation-workflows",
+    featured: true,
+    category: "ai",
+    highlights: [
+      "Pipeline visual con steps animados",
+      "Live Run Log compartido via WebSocket",
+      "Presencia en ecosistema global del portfolio",
+      "Simulación de triggers, AI steps y notificaciones",
+    ],
+    gradient: "from-lime-500/20 via-green-500/10 to-emerald-500/5",
+    icon: "⚙️",
+    year: "2026",
+  },
 ];
 
 export const skills = [
@@ -217,6 +240,7 @@ export const skills = [
   "Tailwind CSS v4",
   "GSAP / ScrollTrigger",
   "Partykit",
+  "Workflow Automation",
   "PostgreSQL",
   "Playwright",
   "GitHub Actions",

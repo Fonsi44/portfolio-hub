@@ -28,6 +28,7 @@ const APP_LABELS: Record<AppId, string> = {
   saas: "SaaS Dash",
   landing: "Motion Lab",
   collab: "Collab",
+  automation: "FlowForge",
 };
 
 export function LiveEcosystemBar() {

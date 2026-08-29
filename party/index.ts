@@ -1,6 +1,6 @@
 import type * as Party from "partykit/server";
 
-type AppId = "hub" | "ai-agent" | "saas" | "landing" | "collab";
+type AppId = "hub" | "ai-agent" | "saas" | "landing" | "collab" | "automation";
 
 type EcosystemUser = {
   id: string;
@@ -36,6 +36,14 @@ type Cursor = {
   color: string;
 };
 
+type RunEvent = {
+  id: string;
+  user: string;
+  step: string;
+  status: "running" | "done" | "started" | "complete";
+  ts: number;
+};
+
 type Transaction = {
   id: string;
   customer: string;
@@ -63,6 +71,7 @@ export default class PortfolioLiveServer implements Party.Server {
   notes = new Map<string, Note>();
   cursors = new Map<string, Cursor>();
   hubCursors = new Map<string, Cursor>();
+  runs: RunEvent[] = [];
   metricTick = 0;
   saasInterval: ReturnType<typeof setInterval> | null = null;
   landingInterval: ReturnType<typeof setInterval> | null = null;
@@ -115,6 +124,11 @@ export default class PortfolioLiveServer implements Party.Server {
       return;
     }
 
+    if (roomId === "automation") {
+      conn.send(JSON.stringify({ type: "run-sync", runs: this.runs.slice(-30) }));
+      return;
+    }
+
     if (roomId === "collab") {
       conn.send(
         JSON.stringify({
@@ -142,6 +156,11 @@ export default class PortfolioLiveServer implements Party.Server {
 
     if (roomId === "landing") {
       this.handleLanding(data, sender);
+      return;
+    }
+
+    if (roomId === "automation") {
+      this.handleAutomation(data, sender);
       return;
     }
 
@@ -220,6 +239,21 @@ export default class PortfolioLiveServer implements Party.Server {
       };
       this.hubCursors.set(sender.id, cursor);
       this.room.broadcast(JSON.stringify({ type: "hub-cursor", ...cursor }), [sender.id]);
+    }
+  }
+
+  private handleAutomation(data: Record<string, unknown>, sender: Party.Connection) {
+    if (data.type === "run-step") {
+      const event: RunEvent = {
+        id: uid(),
+        user: data.user as string,
+        step: data.step as string,
+        status: data.status as RunEvent["status"],
+        ts: Date.now(),
+      };
+      this.runs.push(event);
+      if (this.runs.length > 100) this.runs.shift();
+      this.room.broadcast(JSON.stringify({ type: "run-event", event }));
     }
   }
 

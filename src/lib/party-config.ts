@@ -1,7 +1,7 @@
 export const PARTY_HOST =
   process.env.NEXT_PUBLIC_PARTYKIT_HOST ?? "portfolio-live-party.fonsi44.partykit.dev";
 
-export type AppId = "hub" | "ai-agent" | "saas" | "landing" | "collab";
+export type AppId = "hub" | "ai-agent" | "saas" | "landing" | "collab" | "automation";
 
 export const COLORS = ["#22d3ee", "#a78bfa", "#fbbf24", "#34d399", "#f472b6", "#fb923c"];
 

@@ -89,7 +89,7 @@ export function Hero() {
         >
           {[
             { value: "Comercial", label: "Mi origen" },
-            { value: "5+", label: "Proyectos en producción" },
+            { value: "6+", label: "Proyectos en producción" },
             { value: "100%", label: "Objetivo: vivir de IA" },
           ].map((stat) => (
             <div key={stat.label}>
